@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-
+import { LocalStorage } from "./services/localstorage.service";
+ 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'rb-app',
+    templateUrl: 'app.component.html', 
+    providers: [LocalStorage]
+
 })
-export class AppComponent {
-  title = 'app works!';
+export class AppComponent { 
+  brand: string = 'RECIPE BOOK'; 
 }

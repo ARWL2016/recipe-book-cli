@@ -19,9 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css", 
+        "app/app.component.css", 
+        "../node_modules/bootstrap/dist/css/bootstrap.css", 
+        "../node_modules/toastr/build/toastr.min.css"
+
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js", 
+        "../node_modules/toastr/build/toastr.min.js", 
+        "../node_modules/reflect-metadata/Reflect.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
