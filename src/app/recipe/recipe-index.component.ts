@@ -5,22 +5,22 @@ import { pageTransition } from "../animations";
 
 @Component({
   selector: 'index',
-  templateUrl: 'recipe-index.html', 
-  styleUrls: ['recipe-index.css'], 
+  templateUrl: './recipe-index.html',
+  styleUrls: ['./recipe-index.css'],
   animations: [ pageTransition ]
 })
 export class RecipeIndex {
-  recipes: Recipe[]; 
-  numberOfRecipes: number; 
-  plural: string; 
+  recipes: Recipe[];
+  numberOfRecipes: number;
+  plural: string;
 
 
-  constructor(public _localStorage: LocalStorage) {}
+  constructor(private _localStorage: LocalStorage) {}
 
   ngOnInit():void {
-    this.recipes = this._localStorage.fetchRecipes(); 
-    this.numberOfRecipes = this.recipes.length; 
-    this.plural = this.numberOfRecipes === 1 ? '' : 's'; 
+    this.recipes = this._localStorage.fetchRecipes();
+    this.numberOfRecipes = this.recipes.length;
+    this.plural = this.numberOfRecipes === 1 ? '' : 's';
 
   }
 }
