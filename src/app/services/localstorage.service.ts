@@ -7,32 +7,33 @@ import { Recipe } from "../models/recipe.model";
 export class LocalStorage {
   starterRecipes = [
     {
-      recipeName: "Pumpkin Pie", 
-      ingredientsArray: ["pumpkins", "milk", "eggs", "salt", "cinnamon"], 
+      recipeName: "Pumpkin Pie",
+      ingredientsArray: ["pumpkins", "milk", "eggs", "salt", "cinnamon"],
       ingredientsString: '',
       id: _.uniqueId()
-    }, 
+    },
     {
-      recipeName: "Peshwari Naan", 
+      recipeName: "Peshwari Naan",
       ingredientsArray: ["flour", "yeast", "yoghurt", "coconut", "almonds"],
       ingredientsString: '',
       id: _.uniqueId()
-    }, 
+    },
     {
-      recipeName: "Spaghetti Carbonara", 
+      recipeName: "Spaghetti Carbonara",
       ingredientsArray: ["spaghetti", "eggs", "bacon", "cheese", "black pepper"],
       ingredientsString: '',
       id: _.uniqueId()
-    }, 
+    },
     {
-      recipeName: "French Onion Soup", 
+      recipeName: "French Onion Soup",
       ingredientsArray: ["onions", "butter", "sugar", "dry sherry", "beef stock", "thyme"],
       ingredientsString: '',
       id: _.uniqueId()
-    }  
+    }
   ]
 
   fetchRecipeList(): Recipe[] {
+    console.log('FETCH RECIPES');
     return JSON.parse(localStorage.getItem("recipeList"));
   }
   setRecipeList(list: Recipe[]) {
@@ -40,38 +41,38 @@ export class LocalStorage {
   }
 
   fetchRecipes(): Recipe[] {
-    const recipeList = this.fetchRecipeList(); 
+    const recipeList = this.fetchRecipeList();
       if (!recipeList) {
         this.setRecipeList(this.starterRecipes);
-      }  
-      return this.fetchRecipeList(); 
-      
+      }
+      return this.fetchRecipeList();
+
   }
 
   fetchRecipeById(id:string): Recipe {
     return (this.fetchRecipeList()
-      .filter((recipe:Recipe) => recipe.id === id))[0]; 
+      .filter((recipe:Recipe) => recipe.id === id))[0];
   }
 
   saveRecipe(recipe: Recipe) {
-    recipe.id = _.uniqueId(); 
-    recipe.ingredientsArray = recipe.ingredientsString.split(','); 
+    recipe.id = _.uniqueId();
+    recipe.ingredientsArray = recipe.ingredientsString.split(',');
     const recipeList = this.fetchRecipeList();
-    recipeList.push(recipe); 
-    this.setRecipeList(recipeList); 
+    recipeList.push(recipe);
+    this.setRecipeList(recipeList);
   }
 
   deleteRecipeById(id: string):void {
-    const filteredList = this.fetchRecipeList().filter((recipe: Recipe) => recipe.id !== id); 
-    this.setRecipeList(filteredList); 
+    const filteredList = this.fetchRecipeList().filter((recipe: Recipe) => recipe.id !== id);
+    this.setRecipeList(filteredList);
   }
 
-  editRecipe(editedRecipe: Recipe) { 
+  editRecipe(editedRecipe: Recipe) {
     const filteredList = this.fetchRecipeList()
-        .filter((recipe: Recipe) => recipe.id !== editedRecipe.id); 
-    editedRecipe.ingredientsArray = editedRecipe.ingredientsString.split(','); 
-    filteredList.push(editedRecipe); 
-    this.setRecipeList(filteredList); 
+        .filter((recipe: Recipe) => recipe.id !== editedRecipe.id);
+    editedRecipe.ingredientsArray = editedRecipe.ingredientsString.split(',');
+    filteredList.push(editedRecipe);
+    this.setRecipeList(filteredList);
   }
 
 

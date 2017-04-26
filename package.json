@@ -3,13 +3,17 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "node dist-server",
     "ng": "ng",
-    "start": "ng serve",
+    "serve": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+        "node": "6.9.2"
+    },
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.0.3",
@@ -23,6 +27,7 @@
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
+    "express": "^4.15.2",
     "jquery": "^3.2.1",
     "rxjs": "^5.1.0",
     "toastr": "^2.1.2",

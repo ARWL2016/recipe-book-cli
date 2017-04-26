@@ -18,6 +18,7 @@ export class RecipeIndex {
   constructor(private _localStorage: LocalStorage) {}
 
   ngOnInit():void {
+    console.log('INIT RECIPE INDEX');
     this.recipes = this._localStorage.fetchRecipes();
     this.numberOfRecipes = this.recipes.length;
     this.plural = this.numberOfRecipes === 1 ? '' : 's';
