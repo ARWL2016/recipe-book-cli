@@ -1,0 +1,13 @@
+div.alert.alert-danger {
+  height: 30px;
+  font-size: 0.8em;
+  padding: 5px;
+}
+
+.addIngredientBtn {
+  margin-top: 10px;
+}
+
+.myIngredientInput {
+  margin-top: 10px;
+}

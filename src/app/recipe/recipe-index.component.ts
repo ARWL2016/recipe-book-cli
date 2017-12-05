@@ -19,7 +19,7 @@ export class RecipeIndexComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('INIT RECIPE INDEX');
-    this.recipes = this._localStorage.fetchRecipes();
+    this.recipes = this._localStorage.initializeData();
     this.numberOfRecipes = this.recipes.length;
     this.plural = this.numberOfRecipes === 1 ? '' : 's';
 

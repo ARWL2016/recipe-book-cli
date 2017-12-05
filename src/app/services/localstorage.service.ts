@@ -1,32 +1,32 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import * as _ from 'underscore';
-import { Recipe } from "../models/recipe.model";
+import { Recipe } from '../models/recipe.model';
 
 @Injectable()
 
 export class LocalStorage {
   starterRecipes = [
     {
-      recipeName: "Pumpkin Pie",
-      ingredientsArray: ["pumpkins", "milk", "eggs", "salt", "cinnamon"],
+      recipeName: 'Pumpkin Pie',
+      ingredientsArray: ['pumpkins', 'milk', 'eggs', 'salt', 'cinnamon'],
       ingredientsString: '',
       id: _.uniqueId()
     },
     {
-      recipeName: "Peshwari Naan",
-      ingredientsArray: ["flour", "yeast", "yoghurt", "coconut", "almonds"],
+      recipeName: 'Peshwari Naan',
+      ingredientsArray: ['flour', 'yeast', 'yoghurt', 'coconut', 'almonds'],
       ingredientsString: '',
       id: _.uniqueId()
     },
     {
-      recipeName: "Spaghetti Carbonara",
-      ingredientsArray: ["spaghetti", "eggs", "bacon", "cheese", "black pepper"],
+      recipeName: 'Spaghetti Carbonara',
+      ingredientsArray: ['spaghetti', 'eggs', 'bacon', 'cheese', 'black pepper'],
       ingredientsString: '',
       id: _.uniqueId()
     },
     {
-      recipeName: "French Onion Soup",
-      ingredientsArray: ["onions", "butter", "sugar", "dry sherry", "beef stock", "thyme"],
+      recipeName: 'French Onion Soup',
+      ingredientsArray: ['onions', 'butter', 'sugar', 'dry sherry', 'beef stock', 'thyme'],
       ingredientsString: '',
       id: _.uniqueId()
     }
@@ -34,13 +34,15 @@ export class LocalStorage {
 
   fetchRecipeList(): Recipe[] {
     console.log('FETCH RECIPES');
-    return JSON.parse(localStorage.getItem("recipeList"));
-  }
-  setRecipeList(list: Recipe[]) {
-    localStorage.setItem("recipeList", JSON.stringify(list));
+    return JSON.parse(localStorage.getItem('recipeList'));
   }
 
-  fetchRecipes(): Recipe[] {
+  setRecipeList(list: Recipe[]) {
+    localStorage.setItem('recipeList', JSON.stringify(list));
+  }
+
+  // return recipe list or set from JSON file if empty
+  initializeData(): Recipe[] {
     const recipeList = this.fetchRecipeList();
       if (!recipeList) {
         this.setRecipeList(this.starterRecipes);

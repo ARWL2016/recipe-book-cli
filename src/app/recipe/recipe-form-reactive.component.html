@@ -9,7 +9,7 @@
     <h3>Add Recipe</h3>
   </div>
   <div class="panel-body">
-  <div class="form-group" [ngClass]="{'has-error': recipeForm.get('recipeName').errors}" >
+  <div class="form-group" [ngClass]="{'has-error': recipeNameMessage}" >
     <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
 
     <input
@@ -17,20 +17,29 @@
       class="form-control myRecipeNameInput"
       placeholder="enter a recipe name"
       formControlName="recipeName">
-      <div class="alert alert-danger" *ngIf="" >You must enter a recipe name</div>
+    <div class="alert alert-danger" *ngIf="recipeNameMessage" >{{ recipeNameMessage }}</div>
 
   </div>
 
-  <div class="form-group" class="has-error">
+  <div class="form-group" [ngClass]="{'has-error': recipeForm.get('ingredients').errors}">
+
 
     <label class="control-label myFormLabel">Ingredients</label>
 
-    <textarea rows="7" cols="20"
-      class="form-control myIngredientsInput"
-      name="ingredients"
-      placeholder="enter your ingredients, separated by commas"
-      formControlName="ingredients">
-    </textarea>
+    <div formArrayName="ingredients" *ngFor="let ingredient of ingredients.controls; let i = index">
+      <div [formGroupName]="i">
+        <input
+          class="form-control myIngredientInput"
+          placeholder="enter an ingredient"
+          formControlName="ingredient"
+          >
+      </div>
+    </div>
+    <button
+      class="btn btn-primary addIngredientBtn"
+      type="button"
+      [disabled]="ingredients.invalid"
+      (click)="addIngredient()">Add Another Ingredient</button>
 
       <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
 
@@ -39,6 +48,9 @@
     <br>touched: {{ recipeForm.touched }}
     <br>valid: {{ recipeForm.valid }}
     <br>value: {{ recipeForm.value | json }}
+    <br>name valid: {{ recipeForm.get('recipeName').valid }}
+    <br>ingrs: {{ recipeForm.get('ingredients.ingredient') }}
+
   </div>
 
 </div>
