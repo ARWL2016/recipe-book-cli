@@ -5,12 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { RecipeIndex } from "./recipe/recipe-index.component";
-import { RecipeForm } from "./recipe/recipe-form.component";
-import { RecipeDetail } from "./recipe/recipe-detail.component";
-import { AboutPage } from "./about/about-page.component";
-import { LocalStorage } from "./services/localstorage.service";
-import { ToastrService } from "./services/toastr.service";
+import { RecipeIndexComponent } from './recipe/recipe-index.component';
+import { RecipeForm } from './recipe/recipe-form.component';
+import { RecipeDetail } from './recipe/recipe-detail.component';
+import { AboutPage } from './about/about-page.component';
+import { LocalStorage } from './services/localstorage.service';
+import { ToastrService } from './services/toastr.service';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { ToastrService } from "./services/toastr.service";
     FormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'recipes', component: RecipeIndex},
+      { path: 'recipes', component: RecipeIndexComponent },
       { path: 'recipes/:id', component: RecipeDetail},
       { path: 'form', component: RecipeForm },
       { path: 'form/:id', component: RecipeForm },
@@ -29,7 +29,7 @@ import { ToastrService } from "./services/toastr.service";
      ],
   declarations: [
     AppComponent,
-    RecipeIndex,
+    RecipeIndexComponent,
     RecipeDetail,
     RecipeForm,
     AboutPage

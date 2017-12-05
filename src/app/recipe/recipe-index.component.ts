@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { LocalStorage } from "../services/localstorage.service";
-import { Recipe } from "../models/recipe.model";
-import { pageTransition } from "../animations";
+import { Component, OnInit } from '@angular/core';
+import { LocalStorage } from '../services/localstorage.service';
+import { Recipe } from '../models/recipe.model';
+import { pageTransition } from '../animations';
 
 @Component({
-  selector: 'index',
+  selector: 'app-index',
   templateUrl: './recipe-index.html',
   styleUrls: ['./recipe-index.css'],
   animations: [ pageTransition ]
 })
-export class RecipeIndex {
+export class RecipeIndexComponent implements OnInit {
   recipes: Recipe[];
   numberOfRecipes: number;
   plural: string;
@@ -17,7 +17,7 @@ export class RecipeIndex {
 
   constructor(private _localStorage: LocalStorage) {}
 
-  ngOnInit():void {
+  ngOnInit(): void {
     console.log('INIT RECIPE INDEX');
     this.recipes = this._localStorage.fetchRecipes();
     this.numberOfRecipes = this.recipes.length;
