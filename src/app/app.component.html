@@ -6,14 +6,16 @@
               <li><a [routerLink]="['/recipes']">RECIPES</a></li>
               <li><a [routerLink]="['/form']">ADD RECIPE</a></li>
               <li><a [routerLink]="['/about']">ABOUT</a></li>
+              <li><a [routerLink]="['/reactive']">REACTIVE</a></li>
 
           </ul>
           <ul class="nav navbar-nav about-link">
-            <li><a href="https://github.com/ARWL2016/recipe-book-app-ng" target="_blank">View on Github</a></li>
           </ul>
         </div>
       </nav>
     </div>
-    <div class="container myContainer" >
-      <router-outlet></router-outlet>
+    <div class="page-wrapper">
+      <div class="container myContainer" >
+        <router-outlet></router-outlet>
+      </div>
     </div>
