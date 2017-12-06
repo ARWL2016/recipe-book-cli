@@ -4,14 +4,14 @@
   </div>
   <div class="panel-body">
     <table class="table">
-      <thead> 
+      <thead>
         <tr>
           <th><h4>You have {{numberOfRecipes}} recipe{{plural}}. Click below to see the details.</h4></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let recipe of recipes">
-          <td class="myTableCell"><a [routerLink]="['/recipes', recipe.id]">{{recipe.recipeName}}</a></td>
+          <td class="myTableCell"><a [routerLink]="['/recipes', recipe.id]">{{recipe.recipeName}} {{recipe.id}}</a></td>
         </tr>
       </tbody>
     </table>

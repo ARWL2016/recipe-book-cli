@@ -10,31 +10,17 @@ import { Recipe } from '../models/recipe.model';
 @Injectable()
 
 export class LocalStorage {
-  starterRecipes = [
+  starterRecipes: Recipe[] = [
     {
       recipeName: 'Pumpkin Pie',
-      ingredientsArray: ['pumpkins', 'milk', 'eggs', 'salt', 'cinnamon'],
-      ingredientsString: '',
+      serves: '2',
+      ingredients: [
+        {ingredient: 'pumpkins', amount: '1'},
+        {ingredient: 'pie', amount: '2kg'},
+      ],
       id: _.uniqueId()
     },
-    {
-      recipeName: 'Peshwari Naan',
-      ingredientsArray: ['flour', 'yeast', 'yoghurt', 'coconut', 'almonds'],
-      ingredientsString: '',
-      id: _.uniqueId()
-    },
-    {
-      recipeName: 'Spaghetti Carbonara',
-      ingredientsArray: ['spaghetti', 'eggs', 'bacon', 'cheese', 'black pepper'],
-      ingredientsString: '',
-      id: _.uniqueId()
-    },
-    {
-      recipeName: 'French Onion Soup',
-      ingredientsArray: ['onions', 'butter', 'sugar', 'dry sherry', 'beef stock', 'thyme'],
-      ingredientsString: '',
-      id: _.uniqueId()
-    }
+
   ]
 
   // return recipe list or set from JSON file if empty
@@ -65,7 +51,7 @@ export class LocalStorage {
   // save a recipe without an id (a new recipe)
   public saveNewRecipe(recipe: Recipe): void {
     recipe.id = _.uniqueId();
-    recipe.ingredientsArray = recipe.ingredientsString.split(',');
+    // recipe.ingredientsArray = recipe.ingredientsString.split(',');
     const recipeList = this.getRecipes();
     recipeList.push(recipe);
     this.setRecipes(recipeList);
@@ -77,7 +63,7 @@ export class LocalStorage {
     const filteredList = this.getRecipes()
         .filter((recipe: Recipe) => recipe.id !== editedRecipe.id);
 
-    editedRecipe.ingredientsArray = editedRecipe.ingredientsString.split(',');
+    // editedRecipe.ingredientsArray = editedRecipe.ingredientsString.split(',');
     filteredList.push(editedRecipe);
     this.setRecipes(filteredList);
   }

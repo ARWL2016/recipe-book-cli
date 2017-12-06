@@ -1,37 +1,44 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorage } from "../services/localstorage.service";
-import { Recipe } from "../models/recipe.model";
-import { ToastrService } from "../services/toastr.service";
+/**
+ *  This component renders the data for a single recipe
+ *  It is only accessible from the recipe-index component with the ID as a URL parameter
+ *  @function OnInit - uses the ID to get the recipe from local storage service
+ *  @function deleteRecipe - removes recipe from local storage
+ *
+ */
 
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../models/recipe.model';
+import { LocalStorage } from '../services/localstorage.service';
+import { ToastrService } from '../services/toastr.service';
 
 @Component({
   templateUrl: './recipe-detail.html',
   styleUrls: ['./recipe-detail.css']
 })
-export class RecipeDetail {
+export class RecipeDetailComponent implements OnInit {
   id: string;
   recipe: Recipe;
 
   constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _localStorage: LocalStorage,
-    private _toastr: ToastrService
+    private route: ActivatedRoute,
+    private router: Router,
+    private store: LocalStorage,
+    private toastr: ToastrService
     ) {
-    console.log(this._route.snapshot.params['id']);
-    this.id = this._route.snapshot.params['id'];
+    console.log(this.route.snapshot.params['id']);
+    this.id = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.recipe = this._localStorage.getRecipeById(this.id);
+    this.recipe = this.store.getRecipeById(this.id);
     console.log(this.recipe);
   }
 
-  deleteRecipe(id: string):void {
-    this._localStorage.deleteRecipeById(this.id);
-    this._router.navigate(['/recipes']);
-    this._toastr.info('Recipe deleted!');
+  deleteRecipe(id: string): void {
+    this.store.deleteRecipeById(this.id);
+    this.router.navigate(['/recipes']);
+    this.toastr.info('Recipe deleted!');
   }
 
 

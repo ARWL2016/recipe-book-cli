@@ -1,16 +1,25 @@
 .panel-heading {
-  background-color: #118AB2; 
+  background-color: #118AB2;
+}
+
+.panel-heading > h3 {
+  padding: 0;
+  margin: 5px 0;
+}
+
+.rb-serves {
+  font-style: italic;
 }
 
 .myTableCell {
-  padding: 15px 0 15px 15px; 
+  padding: 15px 0 15px 15px;
 }
 
 .btn-danger {
-  background-color: #EF476F; 
+  background-color: #EF476F;
 }
 
 .btn-back {
-  float: right; 
+  float: right;
 }
 

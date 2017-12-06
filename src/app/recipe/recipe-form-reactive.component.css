@@ -4,10 +4,33 @@ div.alert.alert-danger {
   padding: 5px;
 }
 
-.addIngredientBtn {
-  margin-top: 10px;
+.rb-radio-btns label {
+  margin-right: 10px;
 }
 
-.myIngredientInput {
+.rb-ingredient-input,
+.rb-amount-input {
+  margin-top: 5px;
+  display: inline-block;
+
+}
+
+.rb-ingredient-input {
+  width: 40%;
+}
+
+.rb-amount-input {
+  width: 30%;
+}
+
+.rb-ingredient-label {
+  width: 40%;
+}
+
+.rb-amount-label {
+  width: 30%;
+}
+
+.addIngredientBtn {
   margin-top: 10px;
 }

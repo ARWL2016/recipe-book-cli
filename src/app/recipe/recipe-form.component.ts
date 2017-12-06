@@ -45,7 +45,7 @@ export class RecipeForm {
     }
   }
 
-  submitForm():void {
+  submitForm(): void {
     if (!this.id) {
       console.log('submit form', this.recipe);
       this._localStorage.saveNewRecipe(this.recipe);
