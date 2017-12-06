@@ -24,7 +24,7 @@ export class RecipeDetail {
   }
 
   ngOnInit() {
-    this.recipe = this._localStorage.fetchRecipeById(this.id);
+    this.recipe = this._localStorage.getRecipeById(this.id);
     console.log(this.recipe);
   }
 
