@@ -4,6 +4,10 @@ div.alert.alert-danger {
   padding: 5px;
 }
 
+.panel-heading > h3 {
+  margin: 3px;
+}
+
 .rb-radio-btns label {
   margin-right: 10px;
 }

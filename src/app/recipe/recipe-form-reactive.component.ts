@@ -16,15 +16,16 @@ export class RecipeFormReactiveComponent implements OnInit {
   private urlId: string | undefined;
   formMode = 'Add';
   recipeForm: FormGroup; // the form model
+  ingredients: FormArray;
   private recipe: Recipe = new Recipe(); // the data model
   private validationMessages = {
     required: 'This field is required',
     minlength: 'Must be at least three characters'
   };
   recipeNameMessage;
-  get ingredients(): FormArray {
-    return <FormArray>this.recipeForm.get('ingredients');
-  }
+  // get ingredients(): FormArray {
+  //   return <FormArray>this.recipeForm.get('ingredients');
+  // }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,14 +36,15 @@ export class RecipeFormReactiveComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.urlId = this.route.snapshot.params['id'];
-
+    // define the default form model
     this.recipeForm = this.formBuilder.group({
       recipeName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       serves: '1',
-      ingredients: this.formBuilder.array([this.buildIngredient()]
-      )
+      ingredients: this.formBuilder.array([this.buildIngredient()])
     });
+
+    // create a separate reference for the form array
+    this.ingredients = <FormArray>this.recipeForm.get('ingredients');
 
     // set listener on recipe name field for validation
     const recipeNameControl = this.recipeForm.get('recipeName');
@@ -50,20 +52,20 @@ export class RecipeFormReactiveComponent implements OnInit {
       this.setMessage(recipeNameControl, 'recipeName');
     });
 
-    if (this.urlId) {
-      this.patchForm();
-    }
+    // if form loads for editing a recipe:
+    this.urlId = this.route.snapshot.params['id'];
+    if (this.urlId) {this.patchForm(); }
   }
 
   // create a FormGroup object for ingredient and amount
-  buildIngredient(): FormGroup {
+  buildIngredient(ingr = '', amt = ''): FormGroup {
     return this.formBuilder.group({
-      ingredient: ['', [Validators.required, Validators.minLength(3)]],
-      amount: ''
+      ingredient: [ingr, [Validators.required, Validators.minLength(3)]],
+      amount: amt
     });
   }
 
-  // add a FormGroup object to the ingredients array (render new fields)
+  // click handler: add a FormGroup object to the ingredients array (render new fields)
   addIngredient(): void {
     console.log(this.ingredients);
     this.ingredients.push(this.buildIngredient());
@@ -84,24 +86,29 @@ export class RecipeFormReactiveComponent implements OnInit {
   patchForm() {
     this.formMode = 'Edit';
     this.recipe = this.store.getRecipeById(this.urlId);
-    console.log(this.recipe);
+    console.log('recipe', this.recipe);
 
-    this.recipeForm.value.ingredients[0] = this.recipe.ingredients[0];
-
+    // patch primitive properties
     this.recipeForm.patchValue({
       recipeName: this.recipe.recipeName,
       serves: this.recipe.serves,
-      // ingredients: this.recipe.ingredients,
       id: this.recipe.id
     });
 
+    // patch the form array
+    this.recipe.ingredients.forEach((item, index) => {
+      // const ingr = this.formBuilder.group({
+      //   ingredient: item.ingredient,
+      //   amount: item.amount
+      // });
+      const ingr = this.buildIngredient(item.ingredient, item.amount);
 
+      this.ingredients.push(ingr);
+    });
+    // remove the empty control
+    this.ingredients.controls.shift();
 
-    // this.recipe.ingredients.forEach(ingredient => {
-    //   this.recipeForm.ingredients
-    // })
-
-    console.log(this.recipeForm.value);
+    console.log('recipe form after patch', this.recipeForm.value);
   }
 
   save(recipeForm: FormGroup): void {
