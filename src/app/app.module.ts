@@ -22,7 +22,7 @@ import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.compo
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'recipes', component: RecipeIndexComponent },
-      { path: 'recipes/:id', component: RecipeDetailComponent},
+      { path: 'recipe/:id', component: RecipeDetailComponent},
       // { path: 'form', component: RecipeForm },
       { path: 'reactive', component: RecipeFormReactiveComponent },
       { path: 'reactive/:id', component: RecipeFormReactiveComponent },

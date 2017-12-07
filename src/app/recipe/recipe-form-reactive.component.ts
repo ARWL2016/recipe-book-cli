@@ -86,22 +86,37 @@ export class RecipeFormReactiveComponent implements OnInit {
     this.recipe = this.store.getRecipeById(this.urlId);
     console.log(this.recipe);
 
+    this.recipeForm.value.ingredients[0] = this.recipe.ingredients[0];
+
     this.recipeForm.patchValue({
       recipeName: this.recipe.recipeName,
       serves: this.recipe.serves,
-      ingredients: this.recipe.ingredients,
+      // ingredients: this.recipe.ingredients,
       id: this.recipe.id
     });
+
+
+
+    // this.recipe.ingredients.forEach(ingredient => {
+    //   this.recipeForm.ingredients
+    // })
+
+    console.log(this.recipeForm.value);
   }
 
   save(recipeForm: FormGroup): void {
-    this.recipe = this.recipeForm.value;
-
-    console.log(this.recipe);
-    if (!this.recipe.id) {
+    if (this.formMode === 'Add') {
+      this.recipe = this.recipeForm.value;
+      console.log('ADDING', this.recipe);
       this.store.saveNewRecipe(this.recipe);
-      this.router.navigate(['/recipes']);
+      this.router.navigate(['/recipe', this.recipe.id]);
       this.toastr.success('Recipe added!');
+    } else {
+      // update the recipe with any new values
+      this.recipe = Object.assign({}, this.recipe, this.recipeForm.value);
+      this.store.editRecipe(this.recipe);
+      this.router.navigate(['/recipe', this.recipe.id]);
+      this.toastr.success('Recipe saved!');
     }
   }
 
