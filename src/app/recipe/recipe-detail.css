@@ -23,3 +23,6 @@
   float: right;
 }
 
+.rb-index-btns > button:first-child {
+  margin-right: 5px !important;
+}

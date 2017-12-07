@@ -13,19 +13,17 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./recipe-form-reactive.component.css']
 })
 export class RecipeFormReactiveComponent implements OnInit {
-  private urlId: string | undefined;
   formMode = 'Add';
   recipeForm: FormGroup; // the form model
   ingredients: FormArray;
-  private recipe: Recipe = new Recipe(); // the data model
-  private validationMessages = {
+  recipeNameError: string;
+
+  urlId: string | undefined;
+  recipe: Recipe = new Recipe(); // the data model
+  validationMessages = {
     required: 'This field is required',
     minlength: 'Must be at least three characters'
   };
-  recipeNameMessage;
-  // get ingredients(): FormArray {
-  //   return <FormArray>this.recipeForm.get('ingredients');
-  // }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,9 +45,10 @@ export class RecipeFormReactiveComponent implements OnInit {
     this.ingredients = <FormArray>this.recipeForm.get('ingredients');
 
     // set listener on recipe name field for validation
-    const recipeNameControl = this.recipeForm.get('recipeName');
-    recipeNameControl.valueChanges.debounceTime(1000).subscribe(value => {
-      this.setMessage(recipeNameControl, 'recipeName');
+    const recipeNameCtrl = this.recipeForm.get('recipeName');
+    recipeNameCtrl.valueChanges.debounceTime(1000).subscribe(value => {
+      console.log({recipeNameCtrl});
+      this.setMessage(recipeNameCtrl, 'recipeName');
     });
 
     // if form loads for editing a recipe:
@@ -61,22 +60,26 @@ export class RecipeFormReactiveComponent implements OnInit {
   buildIngredient(ingr = '', amt = ''): FormGroup {
     return this.formBuilder.group({
       ingredient: [ingr, [Validators.required, Validators.minLength(3)]],
-      amount: amt
+      amount: [amt, [Validators.required]]
     });
   }
 
-  // click handler: add a FormGroup object to the ingredients array (render new fields)
+  // click handlers: add or remove a FormGroup object to / from the ingredients array (will render in UI)
   addIngredient(): void {
     console.log(this.ingredients);
     this.ingredients.push(this.buildIngredient());
   }
 
+  removeIngredient(): void {
+    this.ingredients.controls.pop();
+  }
+
   // set validation messages from form control object
   setMessage(ctrl: AbstractControl, name: String): void {
     if (name === 'recipeName') {
-      this.recipeNameMessage = '';
+      this.recipeNameError = '';
       if ((ctrl.touched || ctrl.dirty) && ctrl.errors) {
-        this.recipeNameMessage = Object.keys(ctrl.errors).map(key =>
+        this.recipeNameError = Object.keys(ctrl.errors).map(key =>
           this.validationMessages[key]).join(' ');
       }
     }
@@ -96,13 +99,8 @@ export class RecipeFormReactiveComponent implements OnInit {
     });
 
     // patch the form array
-    this.recipe.ingredients.forEach((item, index) => {
-      // const ingr = this.formBuilder.group({
-      //   ingredient: item.ingredient,
-      //   amount: item.amount
-      // });
+    this.recipe.ingredients.forEach(item => {
       const ingr = this.buildIngredient(item.ingredient, item.amount);
-
       this.ingredients.push(ingr);
     });
     // remove the empty control
@@ -114,17 +112,19 @@ export class RecipeFormReactiveComponent implements OnInit {
   save(recipeForm: FormGroup): void {
     if (this.formMode === 'Add') {
       this.recipe = this.recipeForm.value;
-      console.log('ADDING', this.recipe);
       this.store.saveNewRecipe(this.recipe);
-      this.router.navigate(['/recipe', this.recipe.id]);
-      this.toastr.success('Recipe added!');
+      this.exit('Recipe saved!');
     } else {
       // update the recipe with any new values
       this.recipe = Object.assign({}, this.recipe, this.recipeForm.value);
       this.store.editRecipe(this.recipe);
-      this.router.navigate(['/recipe', this.recipe.id]);
-      this.toastr.success('Recipe saved!');
+      this.exit('Recipe added!');
     }
+  }
+
+  exit(message: string): void {
+    this.router.navigate(['/recipe', this.recipe.id]);
+    this.toastr.success(message);
   }
 
 }

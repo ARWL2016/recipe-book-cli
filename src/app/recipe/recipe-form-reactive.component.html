@@ -11,14 +11,14 @@
   <div class="panel-body">
 
   <!-- recipe name field -->
-  <div class="form-group" [ngClass]="{'has-error': recipeNameMessage}" >
+  <div class="form-group" [ngClass]="{'has-error': recipeNameError}" >
     <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
     <input
       id="recipeNameId" type="text"
       class="form-control myRecipeNameInput"
       placeholder="enter a recipe name"
       formControlName="recipeName">
-    <div class="alert alert-danger" *ngIf="recipeNameMessage" >{{ recipeNameMessage }}</div>
+    <div class="alert alert-danger" *ngIf="recipeNameError" >{{ recipeNameError }}</div>
   </div>
 
   <!-- serves radio buttons -->
@@ -35,6 +35,9 @@
 
     <input type="radio" id="serves6" value="6" formControlName="serves">
     <label for="serves6">6</label>
+
+    <input type="radio" id="serves8" value="8" formControlName="serves">
+    <label for="serves6">8</label>
   </div>
 
   <!-- ingredients fields -->
@@ -57,32 +60,38 @@
       </div>
     </div>
     <button
-      class="btn btn-primary addIngredientBtn"
+      class="btn btn-primary ingredientBtn"
       type="button"
       [disabled]="ingredients.invalid"
-      (click)="addIngredient()">Add Another Ingredient</button>
+      (click)="addIngredient()">Add Another Ingredient
+    </button>
+    <button
+      class="btn btn-warning ingredientBtn"
+      type="button"
+      [disabled]="ingredients.length < 2"
+      (click)="removeIngredient()">Remove Ingredient
+    </button>
+
 
       <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
 
   </div>
-    <!-- <br>Dirty: {{ recipeForm.dirty }}
+    <br>Dirty: {{ recipeForm.dirty }}
     <br>touched: {{ recipeForm.touched }}
-    <br>valid: {{ recipeForm.valid }} -->
+    <br>valid: {{ recipeForm.valid }}
     <br>value: {{ recipeForm.value | json }}
-    <!-- <br>name valid: {{ recipeForm.get('recipeName').valid }}
-    <br>ingrs: {{ recipeForm.get('ingredients.ingredient') }} -->
-
+    <br>name valid: {{ recipeForm.get('recipeName').valid }}
   </div>
 
 </div>
-
-  <button type="submit"
-          class="btn btn-lg btn-primary"
-          [disabled]="!recipeForm.valid">
-    Save
-  </button>
-  <button [routerLink]="['/recipes']" class="btn btn-lg btn-warning">Cancel</button>
-
+  <div class="rb-form-btns">
+    <button type="submit"
+            class="btn btn-lg btn-primary"
+            [disabled]="!recipeForm.valid">
+      Save
+    </button>
+    <button [routerLink]="['/recipes']" class="btn btn-lg btn-warning">Cancel</button>
+  </div>
 </form>
 
 

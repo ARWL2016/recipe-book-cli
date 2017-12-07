@@ -1,7 +1,13 @@
 .myTableCell {
-  padding: 15px 0 15px 15px; 
+  padding: 15px 0 15px 15px;
 }
 
 .panel-heading {
-  background-color: #118AB2; 
+  background-color: #118AB2;
 }
+
+.panel-heading > h3 {
+  margin: 3px;
+}
+
+

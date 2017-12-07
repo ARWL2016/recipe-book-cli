@@ -4,6 +4,10 @@ div.alert.alert-danger {
   padding: 5px;
 }
 
+.panel-heading {
+  background-color: #118AB2;
+}
+
 .panel-heading > h3 {
   margin: 3px;
 }
@@ -35,6 +39,10 @@ div.alert.alert-danger {
   width: 30%;
 }
 
-.addIngredientBtn {
+.ingredientBtn {
   margin-top: 10px;
+}
+
+.rb-form-btns > button:first-child {
+  margin-right: 5px;
 }
