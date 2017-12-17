@@ -4,16 +4,18 @@
   "license": "MIT",
   "scripts": {
     "start": "node server",
+    "server": "nodemon server",
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",
+    "build:watch": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "engines": {
-        "node": "6.9.2"
-    },
+    "node": "6.9.2"
+  },
   "private": false,
   "dependencies": {
     "@angular/animations": "^4.0.3",
@@ -26,8 +28,10 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "bootstrap": "^3.3.6",
+    "compression": "1.7.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
+    "helmet": "3.9.0",
     "jquery": "^3.2.1",
     "rxjs": "^5.1.0",
     "toastr": "^2.1.2",
@@ -45,9 +49,10 @@
     "karma": "~1.4.1",
     "karma-chrome-launcher": "~2.0.0",
     "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "npm-run-all": "4.1.2",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",

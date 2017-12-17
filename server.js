@@ -1,9 +1,19 @@
-var express = require('express');
+const express = require('express');
+const compression = require('compression');
+const helmet = require('helmet');
+const path = require('path');
 
-var app = express();
-var port = process.env.PORT || 8080;
+const app = express();
+app.use(helmet());
+app.use(compression());
 
-app.use(express.static(__dirname + '/dist'));
+const port = process.env.PORT || 8080;
+
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+})
 
 app.listen(port, () => {
   console.log('Listening on port ' + port);
