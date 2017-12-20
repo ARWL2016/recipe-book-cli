@@ -149,7 +149,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "button {\r\n  margin-right: 10px;\r\n}\r\n\r\nbody, html {\r\n  background-color: #2e2e2e;\r\n}\r\n\r\nbody {\r\n  /* background: url('./assets/images/bg-img-wide.jpg') no-repeat; */\r\n  background-size:  cover;\r\n}\r\n\r\nnav.navbar.navbar-default {\r\n  margin-bottom: 0;\r\n}\r\n\r\n.myNavbar {\r\n  max-width: 800px;\r\n  margin: 0 auto;\r\n  font-family: 'Roboto', sans-serif;\r\n  font-size:1.2em;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.page-wrapper {\r\n  background-color: #2e2e2e;\r\n\r\n}\r\n\r\n.myContainer {\r\n  max-width: 800px;\r\n  padding: 35px 0;\r\n  font-family: 'Roboto', sans-serif;\r\n  font-size:1.2em;\r\n}\r\n\r\n\r\n.about-link {\r\n  float: right;\r\n  margin-right: 20px;\r\n}\r\n", ""]);
+exports.push([module.i, "/* navigation styles */\r\n\r\nnav.navbar.navbar-default {\r\n  margin-bottom: 0;\r\n  border: 1px dotted red;\r\n  /* max-width: 800px; */\r\n  /* margin: 0 auto; */\r\n}\r\n\r\ndiv.container-fluid {\r\n  max-width: 800px;\r\n  margin:0 auto;\r\n}\r\n\r\nul.nav > li {\r\n  padding-top: 4px;\r\n}\r\n\r\nul.nav.nav-tabs {\r\n  border-bottom: none;\r\n}\r\n\r\na {\r\n  font-weight: bold;\r\n}\r\n\r\n/* content styles */\r\n\r\n.page-wrapper {\r\n  background-color: #2e2e2e;\r\n\r\n}\r\n\r\n.myContainer {\r\n  max-width: 800px;\r\n  padding: 35px 0;\r\n  font-family: 'Roboto', sans-serif;\r\n  font-size:1.2em;\r\n}\r\n\r\n.about-link {\r\n  float: right;\r\n  margin-right: 20px;\r\n}\r\n\r\n@media screen and (max-width: 500px) {\r\n  a.navbar-brand {\r\n    display: none;\r\n  }\r\n\r\n}\r\n\r\n@media screen and (max-width: 340px) {\r\n  ul.nav-tabs > li > a {\r\n    padding-left: 3px;\r\n    padding-right: 3px;\r\n  }\r\n}\r\n", ""]);
 
 // exports
 
@@ -164,7 +164,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "html {\r\n  background-color: #2e2e2e;\r\n}\r\n\r\nbody {\r\n  font-family: 'Roboto', sans-serif;\r\n  font-size: 16px;\r\n}\r\n", ""]);
 
 // exports
 

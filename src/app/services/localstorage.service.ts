@@ -35,7 +35,7 @@ export class LocalStorage {
 
   // get all recipes from LS
   private getRecipes(): Recipe[] {
-    return JSON.parse(localStorage.getItem('recipeList'));
+    return JSON.parse(localStorage.getItem('recipeList')) || [];
   }
 
   // set LS with recipe list

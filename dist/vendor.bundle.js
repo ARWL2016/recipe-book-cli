@@ -38563,7 +38563,7 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return NoopAnimationPlayer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return AnimationGroupPlayer; });
 /**
- * @license Angular v4.1.0
+ * @license Angular v4.0.3
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -40046,7 +40046,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * @license Angular v4.1.0
+ * @license Angular v4.0.3
  * (c) 2010-2017 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -40420,6 +40420,7 @@ var AnimationTimelineContext = (function () {
      * @param {?=} initialTimeline
      */
     function AnimationTimelineContext(errors, timelines, initialTimeline) {
+        if (initialTimeline === void 0) { initialTimeline = null; }
         this.errors = errors;
         this.timelines = timelines;
         this.previousNode = ({});
@@ -40623,10 +40624,10 @@ var AnimationTimelineVisitor = (function () {
             offsetGap = MAX_KEYFRAME_OFFSET / limit;
         }
         var /** @type {?} */ startTime = context.currentTimeline.duration;
-        var /** @type {?} */ duration = ((context.currentAnimateTimings)).duration;
+        var /** @type {?} */ duration = context.currentAnimateTimings.duration;
         var /** @type {?} */ innerContext = context.createSubContext();
         var /** @type {?} */ innerTimeline = innerContext.currentTimeline;
-        innerTimeline.easing = ((context.currentAnimateTimings)).easing;
+        innerTimeline.easing = context.currentAnimateTimings.easing;
         ast.steps.forEach(function (step, i) {
             var /** @type {?} */ normalizedStyles = normalizeStyles(step.styles);
             var /** @type {?} */ offset = containsOffsets ?
@@ -40648,10 +40649,12 @@ var AnimationTimelineVisitor = (function () {
 var TimelineBuilder = (function () {
     /**
      * @param {?} startTime
-     * @param {?=} globalTimelineStyles
+     * @param {?=} _globalTimelineStyles
      */
-    function TimelineBuilder(startTime, globalTimelineStyles) {
+    function TimelineBuilder(startTime, _globalTimelineStyles) {
+        if (_globalTimelineStyles === void 0) { _globalTimelineStyles = null; }
         this.startTime = startTime;
+        this._globalTimelineStyles = _globalTimelineStyles;
         this.duration = 0;
         this.easing = '';
         this._previousKeyframe = {};
@@ -40660,8 +40663,9 @@ var TimelineBuilder = (function () {
         this._backFill = {};
         this._currentEmptyStepKeyframe = null;
         this._localTimelineStyles = Object.create(this._backFill, {});
-        this._globalTimelineStyles =
-            globalTimelineStyles ? globalTimelineStyles : this._localTimelineStyles;
+        if (!this._globalTimelineStyles) {
+            this._globalTimelineStyles = this._localTimelineStyles;
+        }
         this._loadKeyframe();
     }
     /**
@@ -40691,7 +40695,7 @@ var TimelineBuilder = (function () {
         if (this._currentKeyframe) {
             this._previousKeyframe = this._currentKeyframe;
         }
-        this._currentKeyframe = ((this._keyframes.get(this.duration)));
+        this._currentKeyframe = this._keyframes.get(this.duration);
         if (!this._currentKeyframe) {
             this._currentKeyframe = Object.create(this._backFill, {});
             this._keyframes.set(this.duration, this._currentKeyframe);
@@ -40718,8 +40722,8 @@ var TimelineBuilder = (function () {
      * @return {?}
      */
     TimelineBuilder.prototype._updateStyle = function (prop, value) {
-        this._localTimelineStyles[prop] = value; /** @type {?} */
-        ((this._globalTimelineStyles))[prop] = value;
+        this._localTimelineStyles[prop] = value;
+        this._globalTimelineStyles[prop] = value;
         this._styleSummary[prop] = { time: this.currentTime, value: value };
     };
     /**
@@ -40737,7 +40741,7 @@ var TimelineBuilder = (function () {
         if (easing === void 0) { easing = null; }
         if (treatAsEmptyStep === void 0) { treatAsEmptyStep = false; }
         if (easing) {
-            ((this._previousKeyframe))['easing'] = easing;
+            this._previousKeyframe['easing'] = easing;
         }
         if (treatAsEmptyStep) {
             // special case for animate(duration):
@@ -40777,7 +40781,7 @@ var TimelineBuilder = (function () {
     /**
      * @return {?}
      */
-    TimelineBuilder.prototype.getFinalKeyframe = function () { return ((this._keyframes.get(this.duration))); };
+    TimelineBuilder.prototype.getFinalKeyframe = function () { return this._keyframes.get(this.duration); };
     Object.defineProperty(TimelineBuilder.prototype, "properties", {
         /**
          * @return {?}
@@ -40855,7 +40859,7 @@ function getOffset(ast) {
             offset = (styles['offset']);
         }
     }
-    return ((offset));
+    return offset;
 }
 /**
  * @license
@@ -41097,13 +41101,13 @@ var AnimationValidatorVisitor = (function () {
         }
         var /** @type {?} */ limit = length - 1;
         var /** @type {?} */ currentTime = context.currentTime;
-        var /** @type {?} */ animateDuration = ((context.currentAnimateTimings)).duration;
+        var /** @type {?} */ animateDuration = context.currentAnimateTimings.duration;
         ast.steps.forEach(function (step, i) {
             var /** @type {?} */ offset = generatedOffset > 0 ? (i == limit ? 1 : (generatedOffset * i)) : offsets[i];
             var /** @type {?} */ durationUpToThisFrame = offset * animateDuration;
             context.currentTime =
-                currentTime + ((context.currentAnimateTimings)).delay + durationUpToThisFrame; /** @type {?} */
-            ((context.currentAnimateTimings)).duration = durationUpToThisFrame;
+                currentTime + context.currentAnimateTimings.delay + durationUpToThisFrame;
+            context.currentAnimateTimings.duration = durationUpToThisFrame;
             _this.visitStyle(step, context);
         });
     };
@@ -41187,7 +41191,6 @@ var AnimationTrigger = (function () {
             if (result)
                 return result;
         }
-        return null;
     };
     return AnimationTrigger;
 }());
@@ -41329,6 +41332,7 @@ var DomAnimationEngine = (function () {
      * @return {?}
      */
     DomAnimationEngine.prototype.registerTrigger = function (trigger, name) {
+        if (name === void 0) { name = null; }
         name = name || trigger.name;
         if (this._triggers[name]) {
             return;
@@ -41361,7 +41365,7 @@ var DomAnimationEngine = (function () {
         if (lookupRef) {
             var /** @type {?} */ possibleTriggers = Object.keys(lookupRef);
             var /** @type {?} */ hasRemoval = possibleTriggers.some(function (triggerName) {
-                var /** @type {?} */ oldValue = ((lookupRef))[triggerName];
+                var /** @type {?} */ oldValue = lookupRef[triggerName];
                 var /** @type {?} */ instruction = _this._triggers[triggerName].matchTransition(oldValue, VOID_STATE);
                 return !!instruction;
             });
@@ -41485,7 +41489,7 @@ var DomAnimationEngine = (function () {
         }
         // we make a copy of the array because the actual source array is modified
         // each time a player is finished/destroyed (the forEach loop would fail otherwise)
-        return copyArray(/** @type {?} */ ((this._activeElementAnimations.get(element))));
+        return copyArray(this._activeElementAnimations.get(element));
     };
     /**
      * @param {?} element
@@ -41627,7 +41631,7 @@ var DomAnimationEngine = (function () {
      */
     DomAnimationEngine.prototype._flushQueuedAnimations = function () {
         var _loop_2 = function () {
-            var _a = ((this_2._queuedTransitionAnimations.shift())), player = _a.player, element = _a.element, triggerName = _a.triggerName, event = _a.event;
+            var _a = this_2._queuedTransitionAnimations.shift(), player = _a.player, element = _a.element, triggerName = _a.triggerName, event = _a.event;
             var /** @type {?} */ parent = element;
             while (parent = parent.parentNode) {
                 // this means that a parent element will or will not
@@ -42061,6 +42065,7 @@ var NoopAnimationEngine = (function (_super) {
      * @return {?}
      */
     NoopAnimationEngine.prototype.registerTrigger = function (trigger, name) {
+        if (name === void 0) { name = null; }
         name = name || trigger.name;
         if (this._triggerStyles[name]) {
             return;
@@ -42181,7 +42186,7 @@ var NoopAnimationEngine = (function (_super) {
         });
         // remove all the listeners after everything is complete
         Array.from(this._listeners.keys()).forEach(function (element) {
-            var /** @type {?} */ listenersToKeep = ((_this._listeners.get(element))).filter(function (l) { return !l.doRemove; });
+            var /** @type {?} */ listenersToKeep = _this._listeners.get(element).filter(function (l) { return !l.doRemove; });
             if (listenersToKeep.length) {
                 _this._listeners.set(element, listenersToKeep);
             }

@@ -1,97 +1,100 @@
-<form
-  (ngSubmit)="save()"
-  [formGroup]="recipeForm"
-  class="myForm"
-  novalidate >
+<section>
+  <form
+    (ngSubmit)="save()"
+    [formGroup]="recipeForm"
+    class="myForm"
+    novalidate >
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3>{{formMode}} Recipe <span *ngIf="formMode==='Edit'">- {{recipe.recipeName}}</span></h3>
-  </div>
-  <div class="panel-body">
-
-  <!-- recipe name field -->
-  <div class="form-group" [ngClass]="{'has-error': recipeNameError}" >
-    <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
-    <input
-      id="recipeNameId" type="text"
-      class="form-control myRecipeNameInput"
-      placeholder="enter a recipe name"
-      formControlName="recipeName">
-    <div class="alert alert-danger" *ngIf="recipeNameError" >{{ recipeNameError }}</div>
-  </div>
-
-  <!-- serves radio buttons -->
-  <label>Serves</label>
-  <div class="rb-radio-btns">
-    <input type="radio" id="serves1" value="1" formControlName="serves">
-    <label for="serves1">1</label>
-
-    <input type="radio" id="serves2" value="2" formControlName="serves">
-    <label for="serves2">2</label>
-
-    <input type="radio" id="serves4" value="4" formControlName="serves">
-    <label for="serves4">4</label>
-
-    <input type="radio" id="serves6" value="6" formControlName="serves">
-    <label for="serves6">6</label>
-
-    <input type="radio" id="serves8" value="8" formControlName="serves">
-    <label for="serves6">8</label>
-  </div>
-
-  <!-- ingredients fields -->
-  <div class="form-group" [ngClass]="{'has-error': recipeForm.get('ingredients').errors}">
-    <label class="control-label rb-ingredient-label">Ingredients</label>
-    <label class="control-label rb-amount-label">Amount</label>
-
-    <div formArrayName="ingredients" *ngFor="let ingredient of ingredients.controls; let i = index">
-      <div [formGroupName]="i">
-        <input
-          class="form-control rb-ingredient-input"
-          id="{{ 'ingredient' + i }}"
-          placeholder="enter an ingredient"
-          formControlName="ingredient">
-        <input
-          class="form-control rb-amount-input"
-          id="{{ 'amount' + i }}"
-          placeholder="enter an amount"
-          formControlName="amount">
-      </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>{{formMode}} Recipe <span *ngIf="formMode==='Edit'">- {{recipe.recipeName}}</span></h3>
     </div>
-    <button
-      class="btn btn-primary ingredientBtn"
-      type="button"
-      [disabled]="ingredients.invalid"
-      (click)="addIngredient()">Add Another Ingredient
-    </button>
-    <button
-      class="btn btn-warning ingredientBtn"
-      type="button"
-      [disabled]="ingredients.length < 2"
-      (click)="removeIngredient()">Remove Ingredient
-    </button>
+    <div class="panel-body">
+
+    <!-- recipe name field -->
+    <div class="form-group" [ngClass]="{'has-error': recipeNameError}" >
+      <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
+      <input
+        id="recipeNameId" type="text"
+        class="form-control myRecipeNameInput"
+        placeholder="enter a recipe name"
+        formControlName="recipeName">
+      <div class="alert alert-danger" *ngIf="recipeNameError" >{{ recipeNameError }}</div>
+    </div>
+
+    <!-- serves radio buttons -->
+    <label>Serves</label>
+    <div class="rb-radio-btns">
+      <input type="radio" id="serves1" value="1" formControlName="serves">
+      <label for="serves1">1</label>
+
+      <input type="radio" id="serves2" value="2" formControlName="serves">
+      <label for="serves2">2</label>
+
+      <input type="radio" id="serves4" value="4" formControlName="serves">
+      <label for="serves4">4</label>
+
+      <input type="radio" id="serves6" value="6" formControlName="serves">
+      <label for="serves6">6</label>
+
+      <input type="radio" id="serves8" value="8" formControlName="serves">
+      <label for="serves6">8</label>
+    </div>
+
+    <!-- ingredients fields -->
+    <div class="form-group" [ngClass]="{'has-error': recipeForm.get('ingredients').errors}">
+      <label class="control-label rb-ingredient-label">Ingredients</label>
+      <label class="control-label rb-amount-label">Amount</label>
+
+      <div formArrayName="ingredients" *ngFor="let ingredient of ingredients.controls; let i = index">
+        <div [formGroupName]="i">
+          <input
+            class="form-control rb-ingredient-input"
+            id="{{ 'ingredient' + i }}"
+            placeholder="enter an ingredient"
+            formControlName="ingredient">
+          <input
+            class="form-control rb-amount-input"
+            id="{{ 'amount' + i }}"
+            placeholder="enter an amount"
+            formControlName="amount">
+        </div>
+      </div>
+      <button
+        class="btn btn-primary ingredientBtn"
+        type="button"
+        [disabled]="ingredients.invalid"
+        (click)="addIngredient()">Add Another Ingredient
+      </button>
+      <button
+        class="btn btn-warning ingredientBtn"
+        type="button"
+        [disabled]="ingredients.length < 2"
+        (click)="removeIngredient()">Remove Ingredient
+      </button>
 
 
-      <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
+        <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
+
+    </div>
+      <!-- <br>Dirty: {{ recipeForm.dirty }}
+      <br>touched: {{ recipeForm.touched }}
+      <br>valid: {{ recipeForm.valid }}
+      <br>value: {{ recipeForm.value | json }}
+      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->
+    </div>
+    <!-- end of .panel-body -->
 
   </div>
-    <br>Dirty: {{ recipeForm.dirty }}
-    <br>touched: {{ recipeForm.touched }}
-    <br>valid: {{ recipeForm.valid }}
-    <br>value: {{ recipeForm.value | json }}
-    <br>name valid: {{ recipeForm.get('recipeName').valid }}
-  </div>
-
-</div>
-  <div class="rb-form-btns">
-    <button type="submit"
-            class="btn btn-lg btn-primary"
-            [disabled]="!recipeForm.valid">
-      Save
-    </button>
-    <button [routerLink]="['/recipes']" class="btn btn-lg btn-warning">Cancel</button>
-  </div>
-</form>
+    <div class="rb-form-btns">
+      <button type="submit"
+              class="btn btn-lg btn-primary"
+              [disabled]="!recipeForm.valid">
+        Save
+      </button>
+      <button [routerLink]="['/recipes']" class="btn btn-lg btn-warning">Cancel</button>
+    </div>
+  </form>
+</section>
 
 

@@ -1,4 +1,4 @@
-<div class="panel panel-primary" >
+<section class="panel panel-primary" >
   <div class="panel-heading">
     <h3>{{recipe.recipeName}}</h3>
   </div>
@@ -20,8 +20,8 @@
     </tbody>
   </table>
   </div>
+</section>
 
-</div>
 <div class="rb-index-btns">
   <button class="btn btn-lg btn-warning" [routerLink]="['/reactive', recipe.id]">Edit Recipe</button>
   <button class="btn btn-lg btn-danger" (click)="deleteRecipe()">Delete Recipe</button>

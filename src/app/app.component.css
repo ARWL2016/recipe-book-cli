@@ -1,27 +1,30 @@
-button {
-  margin-right: 10px;
-}
-
-body, html {
-  background-color: #2e2e2e;
-}
-
-body {
-  /* background: url('./assets/images/bg-img-wide.jpg') no-repeat; */
-  background-size:  cover;
-}
+/* navigation styles */
 
 nav.navbar.navbar-default {
   margin-bottom: 0;
+  border: 1px dotted red;
+  /* max-width: 800px; */
+  /* margin: 0 auto; */
 }
 
-.myNavbar {
+div.container-fluid {
   max-width: 800px;
-  margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
-  font-size:1.2em;
-  margin-bottom: 0;
+  margin:0 auto;
 }
+
+ul.nav > li {
+  padding-top: 4px;
+}
+
+ul.nav.nav-tabs {
+  border-bottom: none;
+}
+
+a {
+  font-weight: bold;
+}
+
+/* content styles */
 
 .page-wrapper {
   background-color: #2e2e2e;
@@ -35,8 +38,21 @@ nav.navbar.navbar-default {
   font-size:1.2em;
 }
 
-
 .about-link {
   float: right;
   margin-right: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  a.navbar-brand {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 340px) {
+  ul.nav-tabs > li > a {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
 }

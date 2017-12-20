@@ -21,15 +21,15 @@ import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.compo
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'recipes', component: RecipeIndexComponent },
+      { path: 'home', component: RecipeIndexComponent },
       { path: 'recipe/:id', component: RecipeDetailComponent},
       // { path: 'form', component: RecipeForm },
       { path: 'reactive', component: RecipeFormReactiveComponent },
       { path: 'reactive/:id', component: RecipeFormReactiveComponent },
       // { path: 'form/:id', component: RecipeForm },
       { path: 'about', component: AboutPage },
-      { path: '', redirectTo: 'recipes', pathMatch: 'full'},
-      { path: '**', redirectTo: 'recipes', pathMatch: 'full'}
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: '**', redirectTo: 'home', pathMatch: 'full'}
     ], { useHash: true})
      ],
   declarations: [

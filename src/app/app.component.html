@@ -1,20 +1,19 @@
-    <div>
+    <header>
       <nav class="navbar navbar-default">
-        <div class="myNavbar">
-          <a class="navbar-brand"><b>RECIPE BOOK</b></a>
-            <ul class="nav navbar-nav">
-              <li><a [routerLink]="['/recipes']">RECIPES</a></li>
+        <div class="container-fluid">
+
+          <a [routerLink]="['/home']" class="navbar-brand"><b>RECIPE BOOK</b></a>
+            <ul class="nav nav-tabs">
+              <li><a [routerLink]="['/home']">RECIPES</a></li>
               <li><a [routerLink]="['/reactive']">ADD RECIPE</a></li>
               <li><a [routerLink]="['/about']">ABOUT</a></li>
-
-          </ul>
-          <ul class="nav navbar-nav about-link">
-          </ul>
+            </ul>
         </div>
       </nav>
-    </div>
-    <div class="page-wrapper">
+    </header>
+
+    <main class="page-wrapper">
       <div class="container myContainer" >
         <router-outlet></router-outlet>
       </div>
-    </div>
+    </main>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 // import { LocalStorage } from "./services/localstorage.service";
 
 @Component({
-    selector: 'rb-app',
+    selector: 'app-component',
     templateUrl: './app.component.html',
     providers: []
 
