@@ -26,7 +26,8 @@ export class LocalStorage {
   // return recipe list or set from JSON file if empty
   public initializeData(): Recipe[] {
     const recipeList = this.getRecipes();
-    if (!recipeList) {
+    console.log({recipeList});
+    if (recipeList.length < 1) {
       this.setRecipes(this.starterRecipes);
     }
     return this.getRecipes();

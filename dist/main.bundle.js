@@ -531,7 +531,7 @@ module.exports = module.exports.toString();
 /***/ 181:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"myAboutPage\">\r\n<h2>Angular 2 Recipe Book App</h2>\r\n<p>This application was built with Angular 2, Typescript, and Bootstrap to meet the criteria of the FreeCodeCamp challenge\r\n  <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\">Build a Recipe Box</a>.\r\n  An alternative version of this app, built with React, can be seen\r\n  <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\">here</a>.</p>\r\n  <p>The data for this application is kept in the browser local storage, and will persist between sessions.</p>\r\n  <p>The form is implemented using the reactive form style.</p>\r\n  <p>The source code for can be found on <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\">Github</a>.</p>\r\n  <p><b>Coded by Alistair Willis</b></p>\r\n</div>\r\n"
+module.exports = "<div class=\"myAboutPage\">\r\n<h2>Angular 2 Recipe Book App</h2>\r\n<p>This application was built with Angular 2, Typescript, and Bootstrap to meet the criteria of the FreeCodeCamp challenge\r\n  <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\" rel=\"noopener noreferrer\">Build a Recipe Box</a>.\r\n  An alternative version of this app, built with React, can be seen\r\n  <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.</p>\r\n  <p>The data for this application is kept in the browser local storage, and will persist between sessions.</p>\r\n  <p>The form is implemented using the reactive form style.</p>\r\n  <p>The source code for can be found on\r\n    <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\" rel=\"noopener noreferrer\">Github</a>.\r\n    For more projects, see my <a href=\"https://alistair-willis.herokuapp.com/overview\">portfolio</a> site.\r\n  </p>\r\n  <p><b>Coded by Alistair Willis</b></p>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -608,7 +608,8 @@ var LocalStorage = (function () {
     // return recipe list or set from JSON file if empty
     LocalStorage.prototype.initializeData = function () {
         var recipeList = this.getRecipes();
-        if (!recipeList) {
+        console.log({ recipeList: recipeList });
+        if (recipeList.length < 1) {
             this.setRecipes(this.starterRecipes);
         }
         return this.getRecipes();

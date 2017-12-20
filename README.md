@@ -1,6 +1,32 @@
-to do 
+### Recipe Book Application 
+
+A front end CRUD application for storing recipes in browser local storage.
+
+#### Links
+- git: https://github.com/ARWL2016/recipe-book-cli 
+- website: https://ng-recipe-book.herokuapp.com/#/about 
+
+#### Tech 
+- Angular 4.0 
+- Bootstrap 3.3 
+- Toastr 2.1 
+- Node 6.9.2
+- Express 4.15
+- Build: Angular CLI, typescript 
+
+#### Run this App (dev) 
+- `npm install`
+- `npm run build:watch` - run webpack and Angular compiler in watch mode 
+- (concurrently) `npm run server`
+
+#### Build this App (prod) 
+- `npm run build` - production build 
+- `npm start`
 
 
-- add array inputs for steps
-- write save edited form method
+#### to do 
+- do front end checklist
+- add array inputs for recipe steps 
+- add example recipe in full
 - add navigation guards 
+- deploy to Heroku 
