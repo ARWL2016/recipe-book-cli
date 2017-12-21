@@ -5,14 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Components
 import { AppComponent } from './app.component';
 import { RecipeIndexComponent } from './recipe/recipe-index.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail.component';
+import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.component';
 import { AboutPage } from './about/about-page.component';
+
+// Services
 import { LocalStorage } from './services/localstorage.service';
 import { ToastrService } from './services/toastr.service';
+import { RecipeEditGuard } from 'app/services/recipe-guard.service';
 
-import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,8 +26,12 @@ import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.compo
     RouterModule.forRoot([
       { path: 'home', component: RecipeIndexComponent },
       { path: 'recipe/:id', component: RecipeDetailComponent},
-      { path: 'reactive', component: RecipeFormReactiveComponent },
-      { path: 'reactive/:id', component: RecipeFormReactiveComponent },
+      { path: 'reactive',
+        component: RecipeFormReactiveComponent,
+        canDeactivate: [RecipeEditGuard] },
+      { path: 'reactive/:id',
+        component: RecipeFormReactiveComponent,
+        canDeactivate: [RecipeEditGuard] },
       { path: 'about', component: AboutPage },
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: '**', redirectTo: 'home', pathMatch: 'full'}
@@ -37,7 +45,7 @@ import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.compo
     AboutPage,
     RecipeFormReactiveComponent
      ],
-  providers: [LocalStorage, ToastrService],
+  providers: [LocalStorage, ToastrService, RecipeEditGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

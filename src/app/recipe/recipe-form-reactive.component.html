@@ -14,16 +14,18 @@
     <!-- recipe name field -->
     <div class="form-group" [ngClass]="{'has-error': recipeNameError}" >
       <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
+      <span class="rb-required-label">required</span>
       <input
         id="recipeNameId" type="text"
         class="form-control myRecipeNameInput"
-        placeholder="enter a recipe name"
+        placeholder="e.g. Spaghetti Carbonara"
         formControlName="recipeName">
       <div class="alert alert-danger" *ngIf="recipeNameError" >{{ recipeNameError }}</div>
     </div>
 
+
     <!-- serves radio buttons -->
-    <label>Serves</label>
+    <label class="rb-radio-label">Serves</label>
     <div class="rb-radio-btns">
       <input type="radio" id="serves1" value="1" formControlName="serves">
       <label for="serves1">1</label>
@@ -41,7 +43,10 @@
       <label for="serves6">8</label>
     </div>
 
+    <hr>
+
     <!-- ingredients fields -->
+
     <div class="form-group" [ngClass]="{'has-error': recipeForm.get('ingredients').errors}">
       <label class="control-label rb-ingredient-label">Ingredients</label>
       <label class="control-label rb-amount-label">Amount</label>
@@ -51,32 +56,32 @@
           <input
             class="form-control rb-ingredient-input"
             id="{{ 'ingredient' + i }}"
-            placeholder="enter an ingredient"
+            placeholder="e.g. Pasta"
             formControlName="ingredient">
           <input
             class="form-control rb-amount-input"
             id="{{ 'amount' + i }}"
-            placeholder="enter an amount"
+            placeholder="e.g. 500g"
             formControlName="amount">
         </div>
       </div>
       <button
-        class="btn btn-primary ingredientBtn"
+        class="btn ingredientBtn"
         type="button"
         [disabled]="ingredients.invalid"
-        (click)="addIngredient()">Add Another Ingredient
+        (click)="addIngredient()">Add New
       </button>
       <button
-        class="btn btn-warning ingredientBtn"
+        class="btn ingredientBtn"
         type="button"
         [disabled]="ingredients.length < 2"
-        (click)="removeIngredient()">Remove Ingredient
+        (click)="removeIngredient()">Remove
       </button>
-
-
         <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
-
     </div>
+    <!-- end ingredient-fields -->
+
+    <!-- FORM MODEL OUTPUT -->
       <!-- <br>Dirty: {{ recipeForm.dirty }}
       <br>touched: {{ recipeForm.touched }}
       <br>valid: {{ recipeForm.valid }}

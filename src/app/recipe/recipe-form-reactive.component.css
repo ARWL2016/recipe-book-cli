@@ -1,8 +1,5 @@
-div.alert.alert-danger {
-  height: 30px;
-  font-size: 0.8em;
-  padding: 5px;
-}
+
+/* PANEL STYLES */
 
 .panel-heading {
   background-color: #118AB2;
@@ -10,6 +7,29 @@ div.alert.alert-danger {
 
 .panel-heading > h3 {
   margin: 3px;
+}
+
+
+/* FORM STYLES */
+
+form label {
+  color: #118AB2
+}
+
+hr {
+  /* border: 0; */
+  height: 1px;
+  background-color: lightgrey;
+}
+
+.rb-required-label {
+  color: darkred;
+  float: right;
+  font-size: 0.9em;
+}
+
+.rb-radio-label {
+  color: #118AB2
 }
 
 .rb-radio-btns label {
@@ -28,7 +48,7 @@ div.alert.alert-danger {
 }
 
 .rb-amount-input {
-  width: 30%;
+  width: 40%;
 }
 
 .rb-ingredient-label {
@@ -45,4 +65,23 @@ div.alert.alert-danger {
 
 .rb-form-btns > button:first-child {
   margin-right: 5px;
+}
+
+div.alert.alert-danger {
+  height: 30px;
+  font-size: 0.8em;
+  padding: 5px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 500px) {
+  .rb-ingredient-input {
+    width: 50%;
+  }
+
+  .rb-amount-input {
+    width: 45%;
+  }
 }

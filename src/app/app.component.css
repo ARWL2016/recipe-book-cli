@@ -36,7 +36,12 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-  a.navbar-brand {
+  .container {
+    /* overwrite bootstrap */
+    padding: 15px !important;
+  }
+   a.navbar-brand {
+     /* hide the brand */
     display: none;
   }
 

@@ -26,7 +26,12 @@ A front end CRUD application for storing recipes in browser local storage.
 
 #### to do 
 - do front end checklist
-- add array inputs for recipe steps 
 - add example recipe in full
 - add navigation guards 
 - deploy to Heroku 
+
+#### bugs 
+- when ingredient control is added then removed, the form does not update validation
+
+#### enhancements 
+- add array inputs for recipe steps 

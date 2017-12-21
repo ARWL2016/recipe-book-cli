@@ -132,10 +132,11 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_localstorage_service__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_toastr_service__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__recipe_recipe_form_reactive_component__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__about_about_page_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_localstorage_service__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_toastr_service__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_app_services_recipe_guard_service__ = __webpack_require__(383);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -149,10 +150,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// Components
 
 
 
 
+
+// Services
 
 
 
@@ -171,9 +175,13 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot([
                 { path: 'home', component: __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__["a" /* RecipeIndexComponent */] },
                 { path: 'recipe/:id', component: __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__["a" /* RecipeDetailComponent */] },
-                { path: 'reactive', component: __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */] },
-                { path: 'reactive/:id', component: __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */] },
-                { path: 'about', component: __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__["a" /* AboutPage */] },
+                { path: 'reactive',
+                    component: __WEBPACK_IMPORTED_MODULE_8__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */],
+                    canDeactivate: [__WEBPACK_IMPORTED_MODULE_12_app_services_recipe_guard_service__["a" /* RecipeEditGuard */]] },
+                { path: 'reactive/:id',
+                    component: __WEBPACK_IMPORTED_MODULE_8__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */],
+                    canDeactivate: [__WEBPACK_IMPORTED_MODULE_12_app_services_recipe_guard_service__["a" /* RecipeEditGuard */]] },
+                { path: 'about', component: __WEBPACK_IMPORTED_MODULE_9__about_about_page_component__["a" /* AboutPage */] },
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: '**', redirectTo: 'home', pathMatch: 'full' }
             ], { useHash: true })
@@ -183,10 +191,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__["a" /* RecipeIndexComponent */],
             __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__["a" /* RecipeDetailComponent */],
             // RecipeForm,
-            __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__["a" /* AboutPage */],
-            __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */]
+            __WEBPACK_IMPORTED_MODULE_9__about_about_page_component__["a" /* AboutPage */],
+            __WEBPACK_IMPORTED_MODULE_8__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_9__services_localstorage_service__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_10__services_toastr_service__["a" /* ToastrService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_10__services_localstorage_service__["a" /* LocalStorage */], __WEBPACK_IMPORTED_MODULE_11__services_toastr_service__["a" /* ToastrService */], __WEBPACK_IMPORTED_MODULE_12_app_services_recipe_guard_service__["a" /* RecipeEditGuard */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -506,7 +514,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "section {\r\n  background-color: rgba(255,255,255, 0.8);\r\n  padding: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\nh1 {\r\n  font-size: 1.8em;\r\n  margin: 10px 0 20px 0;\r\n}\r\n\r\np {\r\n  line-height: 1.5em;\r\n  margin-bottom: 10px;\r\n}\r\n\r\np:last-child {\r\n  margin-top: 30px;\r\n}\r\n", ""]);
+exports.push([module.i, "section {\r\n  background-color: rgba(255,255,255, 0.8);\r\n  padding: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\nh1 {\r\n  font-size: 1.8em;\r\n  margin: 10px 0 20px 0;\r\n}\r\n\r\np {\r\n  line-height: 1.5em;\r\n  margin-bottom: 10px;\r\n}\r\n\r\np:last-child {\r\n  margin-top: 30px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media screen and (max-width: 500px) {\r\n\r\n}\r\n", ""]);
 
 // exports
 
@@ -542,7 +550,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "div.alert.alert-danger {\r\n  height: 30px;\r\n  font-size: 0.8em;\r\n  padding: 5px;\r\n}\r\n\r\n.panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h3 {\r\n  margin: 3px;\r\n}\r\n\r\n.rb-radio-btns label {\r\n  margin-right: 10px;\r\n}\r\n\r\n.rb-ingredient-input,\r\n.rb-amount-input {\r\n  margin-top: 5px;\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.rb-ingredient-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-input {\r\n  width: 30%;\r\n}\r\n\r\n.rb-ingredient-label {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-label {\r\n  width: 30%;\r\n}\r\n\r\n.ingredientBtn {\r\n  margin-top: 10px;\r\n}\r\n\r\n.rb-form-btns > button:first-child {\r\n  margin-right: 5px;\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n/* PANEL STYLES */\r\n\r\n.panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h3 {\r\n  margin: 3px;\r\n}\r\n\r\n\r\n/* FORM STYLES */\r\n\r\nform label {\r\n  color: #118AB2\r\n}\r\n\r\nhr {\r\n  /* border: 0; */\r\n  height: 1px;\r\n  background-color: lightgrey;\r\n}\r\n\r\n.rb-required-label {\r\n  color: darkred;\r\n  float: right;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.rb-radio-label {\r\n  color: #118AB2\r\n}\r\n\r\n.rb-radio-btns label {\r\n  margin-right: 10px;\r\n}\r\n\r\n.rb-ingredient-input,\r\n.rb-amount-input {\r\n  margin-top: 5px;\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.rb-ingredient-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-ingredient-label {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-label {\r\n  width: 30%;\r\n}\r\n\r\n.ingredientBtn {\r\n  margin-top: 10px;\r\n}\r\n\r\n.rb-form-btns > button:first-child {\r\n  margin-right: 5px;\r\n}\r\n\r\ndiv.alert.alert-danger {\r\n  height: 30px;\r\n  font-size: 0.8em;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media only screen and (max-width: 500px) {\r\n  .rb-ingredient-input {\r\n    width: 50%;\r\n  }\r\n\r\n  .rb-amount-input {\r\n    width: 45%;\r\n  }\r\n}\r\n", ""]);
 
 // exports
 
@@ -594,7 +602,7 @@ module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-p
 /***/ 336:
 /***/ (function(module, exports) {
 
-module.exports = "<section [@showPage]=\"'on'\">\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label myFormLabel\">Recipe Name</label>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control myRecipeNameInput\"\r\n        placeholder=\"enter a recipe name\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n    <!-- serves radio buttons -->\r\n    <label>Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <!-- ingredients fields -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"enter an ingredient\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"enter an amount\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn btn-primary ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add Another Ingredient\r\n      </button>\r\n      <button\r\n        class=\"btn btn-warning ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove Ingredient\r\n      </button>\r\n\r\n\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n\r\n    </div>\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label myFormLabel\">Recipe Name</label>\r\n      <span class=\"rb-required-label\">required</span>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control myRecipeNameInput\"\r\n        placeholder=\"e.g. Spaghetti Carbonara\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n\r\n    <!-- serves radio buttons -->\r\n    <label class=\"rb-radio-label\">Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <hr>\r\n\r\n    <!-- ingredients fields -->\r\n\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"e.g. Pasta\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"e.g. 500g\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add New\r\n      </button>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove\r\n      </button>\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n    </div>\r\n    <!-- end ingredient-fields -->\r\n\r\n    <!-- FORM MODEL OUTPUT -->\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -610,6 +618,38 @@ module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-p
 
 module.exports = __webpack_require__(148);
 
+
+/***/ }),
+
+/***/ 383:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeEditGuard; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var RecipeEditGuard = (function () {
+    function RecipeEditGuard() {
+    }
+    RecipeEditGuard.prototype.canDeactivate = function (component) {
+        if (component.recipeForm.dirty) {
+            return confirm('Navigate away and lose changes?');
+        }
+        return true;
+    };
+    return RecipeEditGuard;
+}());
+RecipeEditGuard = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])()
+], RecipeEditGuard);
+
+//# sourceMappingURL=recipe-guard.service.js.map
 
 /***/ }),
 
