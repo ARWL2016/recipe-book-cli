@@ -1,3 +1,12 @@
+/**
+ * This component uses the Angular reactive form style. The form model (@prop recipeForm)
+ * is created explicitly on the component class rather than implicitly from the template.
+ *
+ * The formbuilder.group() method is used to create the basic form object with property names,
+ * default values, and validators. The form model properties are bound to the template input
+ * fields using the formControlName directive.
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -52,13 +61,11 @@ export class RecipeFormReactiveComponent implements OnInit {
     // set listeners on recipe name and method fields for validation
     const recipeNameCtrl = this.recipeForm.get('recipeName');
     recipeNameCtrl.valueChanges.debounceTime(1000).subscribe(value => {
-      console.log({recipeNameCtrl});
       this.setMessage(recipeNameCtrl, 'recipeName');
     });
 
     const methodCtrl = this.recipeForm.get('method');
     methodCtrl.valueChanges.debounceTime(1000).subscribe(value => {
-      console.log({ methodCtrl });
       this.setMessage(methodCtrl, 'method');
     })
 
@@ -77,7 +84,6 @@ export class RecipeFormReactiveComponent implements OnInit {
 
   // click handlers: add or remove a FormGroup object to / from the ingredients array (will render in UI)
   addIngredient(): void {
-    console.log(this.ingredients);
     this.ingredients.push(this.buildIngredient());
   }
 
@@ -107,12 +113,12 @@ export class RecipeFormReactiveComponent implements OnInit {
   patchForm() {
     this.formMode = 'Edit';
     this.recipe = this.store.getRecipeById(this.urlId);
-    console.log('recipe', this.recipe);
 
     // patch primitive properties
     this.recipeForm.patchValue({
       recipeName: this.recipe.recipeName,
       serves: this.recipe.serves,
+      method: this.recipe.method,
       id: this.recipe.id
     });
 
@@ -123,8 +129,6 @@ export class RecipeFormReactiveComponent implements OnInit {
     });
     // remove the empty control
     this.ingredients.controls.shift();
-
-    console.log('recipe form after patch', this.recipeForm.value);
   }
 
   save(recipeForm: FormGroup): void {
@@ -136,12 +140,11 @@ export class RecipeFormReactiveComponent implements OnInit {
       // update the recipe with any new values
       this.recipe = Object.assign({}, this.recipe, this.recipeForm.value);
       this.store.editRecipe(this.recipe);
-      this.exit('Recipe added!');
+      this.exit('Changes saved!');
     }
   }
 
   exit(message: string): void {
-    console.log('id', this.recipe.id);
     this.formMode = 'Saved';
     this.router.navigate(['/recipe', this.recipe.id]);
     this.toastr.success(message);

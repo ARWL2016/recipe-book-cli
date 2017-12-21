@@ -1,4 +1,4 @@
-/* navigation styles */
+/* NAVIGATION STYLES */
 
 nav.navbar.navbar-default {
   margin-bottom: 0;
@@ -21,7 +21,7 @@ a {
   font-weight: bold;
 }
 
-/* content styles */
+/* CONTENT STYLES */
 
 .page-wrapper {
   background-color: #2e2e2e;
@@ -32,6 +32,9 @@ a {
   padding: 35px 0;
 }
 
+
+/* MEDIA QUERIES */
+
 @media screen and (max-width: 500px) {
   .container {
     /* overwrite bootstrap */
@@ -41,7 +44,6 @@ a {
      /* hide the brand */
     display: none;
   }
-
 }
 
 @media screen and (max-width: 340px) {

@@ -1,4 +1,3 @@
-// import { Component, Input, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { trigger, state, animate, transition, style } from '@angular/animations';
 
 export const pageTransition =

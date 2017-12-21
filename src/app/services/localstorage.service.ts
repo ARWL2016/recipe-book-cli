@@ -20,19 +20,20 @@ export class LocalStorage {
         {ingredient: 'eggs', amount: '2 large'},
         {ingredient: 'ground cinnamon', amount: '1 tsp'},
         {ingredient: 'ground ginger', amount: '1/2 tsp'},
-        {ingredient: 'condensed milk', amount: '1 14oz can'},
-        {ingredient: 'condensed milk', amount: '1 14oz can'},
+        {ingredient: 'salt', amount: '1/2 tsp'},
+        {ingredient: 'unbaked pie crust', amount: '9 inch'},
       ],
-      method: '',
+      method: `
+        Preheat oven to 425 degrees F. Whisk pumpkin, sweetened condensed milk, eggs, spices and salt in medium bowl until smooth. Pour into crust. Bake 15 minutes.
+        Reduce oven temperature to 350 degrees F and continue baking 35 to 40 minutes or until knife inserted 1 inch from crust comes out clean. Cool. Garnish as desired. Store leftovers covered in refrigerator.
+      `,
       id: _.uniqueId()
     },
-
   ]
 
   // return recipe list or set from JSON file if empty
   public initializeData(): Recipe[] {
     const recipeList = this.getRecipes();
-    console.log({recipeList});
     if (recipeList.length < 1) {
       this.setRecipes(this.starterRecipes);
     }

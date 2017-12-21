@@ -28,13 +28,11 @@ export class RecipeDetailComponent implements OnInit {
     private store: LocalStorage,
     private toastr: ToastrService
     ) {
-    console.log(this.route.snapshot.params['id']);
     this.id = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
     this.recipe = this.store.getRecipeById(this.id);
-    console.log(this.recipe);
   }
 
   deleteRecipe(id: string): void {
@@ -42,7 +40,4 @@ export class RecipeDetailComponent implements OnInit {
     this.router.navigate(['/recipes']);
     this.toastr.info('Recipe deleted!');
   }
-
-
-
 }

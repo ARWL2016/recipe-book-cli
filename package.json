@@ -9,13 +9,14 @@
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --no-aot --prod",
     "build:watch": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "engines": {
-    "node": "6.9.2"
+    "node": "8.9.1"
   },
   "private": false,
   "dependencies": {

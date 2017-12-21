@@ -41,7 +41,6 @@ import { RecipeEditGuard } from 'app/services/recipe-guard.service';
     AppComponent,
     RecipeIndexComponent,
     RecipeDetailComponent,
-    // RecipeForm,
     AboutPage,
     RecipeFormReactiveComponent
      ],

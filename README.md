@@ -23,14 +23,12 @@ A front end CRUD application for storing recipes in browser local storage.
 - `npm run build` - production build 
 - `npm start`
 
-
 #### to do 
 - do front end checklist
-- add example recipe in full
 - deploy to Heroku 
 
 #### bugs 
 - when ingredient control is added then removed, the form does not update validation
+- on initial render, active link is not styled
 
-#### enhancements 
-- add array inputs for recipe steps 
+

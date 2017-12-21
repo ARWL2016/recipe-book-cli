@@ -1,19 +1,18 @@
-    <header>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
+<header>
+  <nav role="navigation" class="navbar navbar-default">
+    <div class="container-fluid">
+      <a [routerLink]="['/home']" class="navbar-brand"><b>RECIPE BOOK</b></a>
+        <ul class="nav nav-tabs">
+          <li><a [routerLink]="['/home']">HOME</a></li>
+          <li><a [routerLink]="['/reactive']">ADD RECIPE</a></li>
+          <li><a [routerLink]="['/about']">ABOUT</a></li>
+        </ul>
+    </div>
+  </nav>
+</header>
 
-          <a [routerLink]="['/home']" class="navbar-brand"><b>RECIPE BOOK</b></a>
-            <ul class="nav nav-tabs">
-              <li><a [routerLink]="['/home']">RECIPES</a></li>
-              <li><a [routerLink]="['/reactive']">ADD RECIPE</a></li>
-              <li><a [routerLink]="['/about']">ABOUT</a></li>
-            </ul>
-        </div>
-      </nav>
-    </header>
-
-    <main class="page-wrapper">
-      <div class="container" >
-        <router-outlet></router-outlet>
-      </div>
-    </main>
+<main role="main" class="page-wrapper">
+  <div class="container" >
+    <router-outlet></router-outlet>
+  </div>
+</main>
