@@ -1,19 +1,38 @@
+/* PANEL STYLES */
+
 .panel-heading {
   background-color: #118AB2;
 }
 
-.panel-heading > h3 {
+.panel-heading > h1 {
   padding: 0;
   margin: 5px 0;
+  font-size: 1.5em;
+}
+
+.panel-body {
+  padding: 25px;
+}
+
+.panel-body h2 {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .rb-serves {
   font-style: italic;
 }
 
-.myTableCell {
+.rb-table-cell {
   padding: 15px 0 15px 15px;
 }
+
+.rb-method p {
+  white-space: pre-line;
+  line-height: 1.8em;
+}
+
+/* BUTTON STYLES */
 
 button.btn-lg {
   margin-bottom: 10px;
@@ -30,6 +49,9 @@ button.btn-lg {
 .rb-index-btns > button:first-child {
   margin-right: 5px !important;
 }
+
+
+/* MEDIA QUERIES */
 
 @media screen and (max-width: 500px) {
   button.btn.btn-lg {

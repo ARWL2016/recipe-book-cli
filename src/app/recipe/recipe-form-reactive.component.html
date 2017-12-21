@@ -11,20 +11,20 @@
     </div>
     <div class="panel-body">
 
-    <!-- recipe name field -->
+    <!-- recipe name: field -->
     <div class="form-group" [ngClass]="{'has-error': recipeNameError}" >
-      <label for="recipeNameId" class="control-label myFormLabel">Recipe Name</label>
+      <label for="recipeNameId" class="control-label">Recipe Name</label>
       <span class="rb-required-label">required</span>
       <input
         id="recipeNameId" type="text"
-        class="form-control myRecipeNameInput"
+        class="form-control"
         placeholder="e.g. Spaghetti Carbonara"
         formControlName="recipeName">
       <div class="alert alert-danger" *ngIf="recipeNameError" >{{ recipeNameError }}</div>
     </div>
 
 
-    <!-- serves radio buttons -->
+    <!-- serves: radio buttons -->
     <label class="rb-radio-label">Serves</label>
     <div class="rb-radio-btns">
       <input type="radio" id="serves1" value="1" formControlName="serves">
@@ -45,7 +45,7 @@
 
     <hr>
 
-    <!-- ingredients fields -->
+    <!-- ingredients, amount: input array -->
 
     <div class="form-group" [ngClass]="{'has-error': recipeForm.get('ingredients').errors}">
       <label class="control-label rb-ingredient-label">Ingredients</label>
@@ -80,13 +80,23 @@
         <!-- <div class="alert alert-danger" *ngIf="inp2.touched && inp2.invalid" [@invalid]="'displayed'" >You must enter at least one ingredient</div> -->
     </div>
     <!-- end ingredient-fields -->
+    <hr>
 
-    <!-- FORM MODEL OUTPUT -->
-      <!-- <br>Dirty: {{ recipeForm.dirty }}
-      <br>touched: {{ recipeForm.touched }}
-      <br>valid: {{ recipeForm.valid }}
-      <br>value: {{ recipeForm.value | json }}
-      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->
+    <!-- method: form input -->
+
+    <div class="form-group">
+      <label for="method" class="control-label">Method</label>
+      <span class="rb-required-label">required</span>
+      <textarea
+        id="method"
+        rows="5"
+        formControlName="method"
+        class="form-control">
+      </textarea>
+      <div class="alert alert-danger" *ngIf="methodError" >{{ methodError }}</div>
+    </div>
+
+
     </div>
     <!-- end of .panel-body -->
 
@@ -101,5 +111,12 @@
     </div>
   </form>
 </section>
+
+    <!-- FORM MODEL OUTPUT -->
+      <!-- <br>Dirty: {{ recipeForm.dirty }}
+      <br>touched: {{ recipeForm.touched }}
+      <br>valid: {{ recipeForm.valid }}
+      <br>value: {{ recipeForm.value | json }}
+      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->
 
 

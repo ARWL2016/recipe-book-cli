@@ -6,7 +6,9 @@ import { RecipeFormReactiveComponent } from 'app/recipe/recipe-form-reactive.com
 export class RecipeEditGuard implements CanDeactivate<RecipeFormReactiveComponent> {
 
   canDeactivate(component: RecipeFormReactiveComponent): boolean {
-    if (component.recipeForm.dirty) {
+
+    // don't check when form is submitted - only on click links or cancel
+    if (component.formMode !== 'Saved' && component.recipeForm.dirty) {
       return confirm('Navigate away and lose changes?');
     }
     return true;

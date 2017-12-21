@@ -6,6 +6,7 @@ export class Recipe {
       ingredient: string,
       amount?: string
     }] = [{ingredient: ''}],
+    public method: string = '',
     public id?: string
   ) {}
 }

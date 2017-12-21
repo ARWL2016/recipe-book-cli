@@ -209,13 +209,15 @@ AppModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Recipe; });
 var Recipe = (function () {
-    function Recipe(recipeName, serves, ingredients, id) {
+    function Recipe(recipeName, serves, ingredients, method, id) {
         if (recipeName === void 0) { recipeName = ''; }
         if (serves === void 0) { serves = '1'; }
         if (ingredients === void 0) { ingredients = [{ ingredient: '' }]; }
+        if (method === void 0) { method = ''; }
         this.recipeName = recipeName;
         this.serves = serves;
         this.ingredients = ingredients;
+        this.method = method;
         this.id = id;
     }
     return Recipe;
@@ -332,7 +334,8 @@ var RecipeFormReactiveComponent = (function () {
         this.recipe = new __WEBPACK_IMPORTED_MODULE_3__models_recipe_model__["a" /* Recipe */](); // the data model
         this.validationMessages = {
             required: 'This field is required',
-            minlength: 'Must be at least three characters'
+            minlength: 'Must be at least three characters',
+            maxlength: 'Maximum length is 1000 characters'
         };
     }
     RecipeFormReactiveComponent.prototype.ngOnInit = function () {
@@ -341,15 +344,21 @@ var RecipeFormReactiveComponent = (function () {
         this.recipeForm = this.formBuilder.group({
             recipeName: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].minLength(3), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].maxLength(50)]],
             serves: '1',
+            method: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].maxLength(1000)]],
             ingredients: this.formBuilder.array([this.buildIngredient()])
         });
         // create a separate reference for the form array
         this.ingredients = this.recipeForm.get('ingredients');
-        // set listener on recipe name field for validation
+        // set listeners on recipe name and method fields for validation
         var recipeNameCtrl = this.recipeForm.get('recipeName');
         recipeNameCtrl.valueChanges.debounceTime(1000).subscribe(function (value) {
             console.log({ recipeNameCtrl: recipeNameCtrl });
             _this.setMessage(recipeNameCtrl, 'recipeName');
+        });
+        var methodCtrl = this.recipeForm.get('method');
+        methodCtrl.valueChanges.debounceTime(1000).subscribe(function (value) {
+            console.log({ methodCtrl: methodCtrl });
+            _this.setMessage(methodCtrl, 'method');
         });
         // if form loads for editing a recipe:
         this.urlId = this.route.snapshot.params['id'];
@@ -381,6 +390,14 @@ var RecipeFormReactiveComponent = (function () {
             this.recipeNameError = '';
             if ((ctrl.touched || ctrl.dirty) && ctrl.errors) {
                 this.recipeNameError = Object.keys(ctrl.errors).map(function (key) {
+                    return _this.validationMessages[key];
+                }).join(' ');
+            }
+        }
+        if (name === 'method') {
+            this.methodError = '';
+            if ((ctrl.touched || ctrl.dirty) && ctrl.errors) {
+                this.methodError = Object.keys(ctrl.errors).map(function (key) {
                     return _this.validationMessages[key];
                 }).join(' ');
             }
@@ -421,6 +438,8 @@ var RecipeFormReactiveComponent = (function () {
         }
     };
     RecipeFormReactiveComponent.prototype.exit = function (message) {
+        console.log('id', this.recipe.id);
+        this.formMode = 'Saved';
         this.router.navigate(['/recipe', this.recipe.id]);
         this.toastr.success(message);
     };
@@ -514,7 +533,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "section {\r\n  background-color: rgba(255,255,255, 0.8);\r\n  padding: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\nh1 {\r\n  font-size: 1.8em;\r\n  margin: 10px 0 20px 0;\r\n}\r\n\r\np {\r\n  line-height: 1.5em;\r\n  margin-bottom: 10px;\r\n}\r\n\r\np:last-child {\r\n  margin-top: 30px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media screen and (max-width: 500px) {\r\n\r\n}\r\n", ""]);
+exports.push([module.i, "section {\r\n  background-color: rgba(255,255,255, 0.8);\r\n  padding: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\nh1 {\r\n  font-size: 1.8em;\r\n  margin: 10px 0 20px 0;\r\n}\r\n\r\np {\r\n  line-height: 1.5em;\r\n  margin-bottom: 10px;\r\n}\r\n\r\n/* p:last-child {\r\n  margin-top: 30px;\r\n} */\r\n\r\nul {\r\n  margin-bottom: 30px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media screen and (max-width: 500px) {\r\n\r\n}\r\n", ""]);
 
 // exports
 
@@ -532,7 +551,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, ".panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h3 {\r\n  padding: 0;\r\n  margin: 5px 0;\r\n}\r\n\r\n.rb-serves {\r\n  font-style: italic;\r\n}\r\n\r\n.myTableCell {\r\n  padding: 15px 0 15px 15px;\r\n}\r\n\r\nbutton.btn-lg {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.btn-danger {\r\n  background-color: #EF476F;\r\n}\r\n\r\n.btn-back {\r\n  float: right;\r\n}\r\n\r\n.rb-index-btns > button:first-child {\r\n  margin-right: 5px !important;\r\n}\r\n\r\n@media screen and (max-width: 500px) {\r\n  button.btn.btn-lg {\r\n    display: block;\r\n    float: left;\r\n    width: 100%;\r\n  }\r\n\r\n}\r\n", ""]);
+exports.push([module.i, "/* PANEL STYLES */\r\n\r\n.panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h1 {\r\n  padding: 0;\r\n  margin: 5px 0;\r\n  font-size: 1.5em;\r\n}\r\n\r\n.panel-body {\r\n  padding: 25px;\r\n}\r\n\r\n.panel-body h2 {\r\n  font-size: 1.2em;\r\n  font-weight: bold;\r\n}\r\n\r\n.rb-serves {\r\n  font-style: italic;\r\n}\r\n\r\n.rb-table-cell {\r\n  padding: 15px 0 15px 15px;\r\n}\r\n\r\n.rb-method p {\r\n  white-space: pre-line;\r\n  line-height: 1.8em;\r\n}\r\n\r\n/* BUTTON STYLES */\r\n\r\nbutton.btn-lg {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.btn-danger {\r\n  background-color: #EF476F;\r\n}\r\n\r\n.btn-back {\r\n  float: right;\r\n}\r\n\r\n.rb-index-btns > button:first-child {\r\n  margin-right: 5px !important;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media screen and (max-width: 500px) {\r\n  button.btn.btn-lg {\r\n    display: block;\r\n    float: left;\r\n    width: 100%;\r\n  }\r\n\r\n}\r\n", ""]);
 
 // exports
 
@@ -550,7 +569,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\r\n/* PANEL STYLES */\r\n\r\n.panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h3 {\r\n  margin: 3px;\r\n}\r\n\r\n\r\n/* FORM STYLES */\r\n\r\nform label {\r\n  color: #118AB2\r\n}\r\n\r\nhr {\r\n  /* border: 0; */\r\n  height: 1px;\r\n  background-color: lightgrey;\r\n}\r\n\r\n.rb-required-label {\r\n  color: darkred;\r\n  float: right;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.rb-radio-label {\r\n  color: #118AB2\r\n}\r\n\r\n.rb-radio-btns label {\r\n  margin-right: 10px;\r\n}\r\n\r\n.rb-ingredient-input,\r\n.rb-amount-input {\r\n  margin-top: 5px;\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.rb-ingredient-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-ingredient-label {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-label {\r\n  width: 30%;\r\n}\r\n\r\n.ingredientBtn {\r\n  margin-top: 10px;\r\n}\r\n\r\n.rb-form-btns > button:first-child {\r\n  margin-right: 5px;\r\n}\r\n\r\ndiv.alert.alert-danger {\r\n  height: 30px;\r\n  font-size: 0.8em;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media only screen and (max-width: 500px) {\r\n  .rb-ingredient-input {\r\n    width: 50%;\r\n  }\r\n\r\n  .rb-amount-input {\r\n    width: 45%;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, "\r\n/* PANEL STYLES */\r\n\r\n.panel-heading {\r\n  background-color: #118AB2;\r\n}\r\n\r\n.panel-heading > h3 {\r\n  margin: 3px;\r\n}\r\n\r\ndiv.panel-body {\r\n  padding: 30px;\r\n}\r\n\r\n\r\n/* FORM STYLES */\r\n\r\nform label {\r\n  color: #118AB2\r\n}\r\n\r\nhr {\r\n  /* border: 0; */\r\n  height: 1px;\r\n  background-color: lightgrey;\r\n}\r\n\r\n.rb-required-label {\r\n  color: darkred;\r\n  float: right;\r\n  font-size: 0.9em;\r\n}\r\n\r\n.rb-radio-label {\r\n  color: #118AB2\r\n}\r\n\r\n.rb-radio-btns label {\r\n  margin-right: 10px;\r\n}\r\n\r\n.rb-ingredient-input,\r\n.rb-amount-input {\r\n  margin-top: 5px;\r\n  display: inline-block;\r\n\r\n}\r\n\r\n.rb-ingredient-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-input {\r\n  width: 40%;\r\n}\r\n\r\n.rb-ingredient-label {\r\n  width: 40%;\r\n}\r\n\r\n.rb-amount-label {\r\n  width: 30%;\r\n}\r\n\r\n.ingredientBtn {\r\n  margin-top: 10px;\r\n}\r\n\r\n.rb-form-btns > button:first-child {\r\n  margin-right: 5px;\r\n}\r\n\r\ndiv.alert.alert-danger {\r\n  height: 30px;\r\n  font-size: 0.8em;\r\n  padding: 5px;\r\n}\r\n\r\n\r\n/* MEDIA QUERIES */\r\n\r\n@media only screen and (max-width: 500px) {\r\n\r\n  div.panel-body {\r\n    padding: 10px;\r\n  }\r\n\r\n  .rb-ingredient-input {\r\n    width: 50%;\r\n  }\r\n\r\n  .rb-amount-input {\r\n    width: 45%;\r\n  }\r\n}\r\n", ""]);
 
 // exports
 
@@ -581,7 +600,7 @@ module.exports = module.exports.toString();
 /***/ 333:
 /***/ (function(module, exports) {
 
-module.exports = "<section [@showPage]=\"'on'\">\r\n  <h1>Recipe Book</h1>\r\n  <p>This application was built with Angular 4.0, Typescript 2.2, and Bootstrap 3.3.7 to meet the criteria of the FreeCodeCamp challenge\r\n    <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\" rel=\"noopener noreferrer\">Build a Recipe Box</a>.\r\n    An alternative version of this app, built with React, can be seen\r\n    <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.</p>\r\n    <ul>\r\n      <li>Application data cached in browser local storage, and will persist between sessions</li>\r\n      <li>Form implemented using the Angular reactive form style</li>\r\n      <li>Notifications created with Toastr</li>\r\n      <li>Page animations require the @angular/animations 4.1.3 module</li>\r\n    </ul>\r\n    <p>The source code can be found on\r\n      <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\" rel=\"noopener noreferrer\">Github</a>.\r\n      For more projects, see my <a href=\"https://alistair-willis.herokuapp.com/overview\">portfolio</a>.\r\n    </p>\r\n    <p><b>Coded by Alistair Willis</b></p>\r\n</section>\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <h1>Recipe Book</h1>\r\n  <p>This application was built with Angular 4.0, Typescript 2.2, and Bootstrap 3.3.7 to meet the criteria of the FreeCodeCamp challenge\r\n    <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\" rel=\"noopener noreferrer\">Build a Recipe Box</a>.\r\n    An alternative version of this app, built with React, can be seen\r\n    <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.</p>\r\n    <p>Application features:</p>\r\n    <ul>\r\n      <li>Application data cached in browser local storage</li>\r\n      <li>Form implemented using the Angular reactive form style</li>\r\n      <li>Notifications created with Toastr</li>\r\n      <li>Page animations require the @angular/animations module</li>\r\n    </ul>\r\n    <p>The source code can be found on\r\n      <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\" rel=\"noopener noreferrer\">Github</a>.\r\n      For more projects, see my <a href=\"https://alistair-willis.herokuapp.com/overview\">portfolio</a>.\r\n    </p>\r\n    <p><b>Coded by Alistair Willis</b></p>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -595,14 +614,14 @@ module.exports = "    <header>\r\n      <nav class=\"navbar navbar-default\">\r\
 /***/ 335:
 /***/ (function(module, exports) {
 
-module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-primary\" >\r\n    <div class=\"panel-heading\">\r\n      <h3>{{recipe.recipeName}}</h3>\r\n    </div>\r\n\r\n    <div class=\"panel-body\">\r\n      <p class=\"rb-serves\">serves {{recipe.serves}}</p>\r\n    <table class=\"table\">\r\n      <thead>\r\n        <tr>\r\n          <th><h4>Ingredients</h4></th>\r\n          <th><h4>Amount</h4></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let item of recipe.ingredients\">\r\n          <td class=\"myTableCell\">{{item.ingredient}}</td>\r\n          <td class=\"myTableCell\">{{item.amount}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"rb-index-btns\">\r\n    <button class=\"btn btn-lg btn-warning\" [routerLink]=\"['/reactive', recipe.id]\">Edit Recipe</button>\r\n    <button class=\"btn btn-lg btn-danger\" (click)=\"deleteRecipe()\">Delete Recipe</button>\r\n    <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-success btn-back\">Back to Recipe List</button>\r\n  </div>\r\n\r\n</section>\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-primary\" >\r\n    <div class=\"panel-heading\">\r\n      <h1>{{recipe.recipeName}}</h1>\r\n    </div>\r\n\r\n    <div class=\"panel-body\">\r\n      <p class=\"rb-serves\">serves {{recipe.serves}}</p>\r\n    <table class=\"table\">\r\n      <thead>\r\n        <tr>\r\n          <th><h2>Ingredients</h2></th>\r\n          <th><h2>Amount</h2></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let item of recipe.ingredients\">\r\n          <td class=\"rb-table-cell\">{{item.ingredient}}</td>\r\n          <td class=\"rb-table-cell\">{{item.amount}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    <div class=\"rb-method\">\r\n      <p>\r\n         {{recipe.method}}\r\n      </p>\r\n\r\n    </div>\r\n\r\n    </div>\r\n  </div>\r\n  <!-- end of panel -->\r\n\r\n  <div class=\"rb-index-btns\">\r\n    <button class=\"btn btn-lg btn-warning\" [routerLink]=\"['/reactive', recipe.id]\">Edit Recipe</button>\r\n    <button class=\"btn btn-lg btn-danger\" (click)=\"deleteRecipe()\">Delete Recipe</button>\r\n    <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-success btn-back\">Back to Recipe List</button>\r\n  </div>\r\n\r\n</section>\r\n"
 
 /***/ }),
 
 /***/ 336:
 /***/ (function(module, exports) {
 
-module.exports = "<section [@showPage]=\"'on'\">\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label myFormLabel\">Recipe Name</label>\r\n      <span class=\"rb-required-label\">required</span>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control myRecipeNameInput\"\r\n        placeholder=\"e.g. Spaghetti Carbonara\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n\r\n    <!-- serves radio buttons -->\r\n    <label class=\"rb-radio-label\">Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <hr>\r\n\r\n    <!-- ingredients fields -->\r\n\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"e.g. Pasta\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"e.g. 500g\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add New\r\n      </button>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove\r\n      </button>\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n    </div>\r\n    <!-- end ingredient-fields -->\r\n\r\n    <!-- FORM MODEL OUTPUT -->\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name: field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label\">Recipe Name</label>\r\n      <span class=\"rb-required-label\">required</span>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control\"\r\n        placeholder=\"e.g. Spaghetti Carbonara\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n\r\n    <!-- serves: radio buttons -->\r\n    <label class=\"rb-radio-label\">Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <hr>\r\n\r\n    <!-- ingredients, amount: input array -->\r\n\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"e.g. Pasta\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"e.g. 500g\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add New\r\n      </button>\r\n      <button\r\n        class=\"btn ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove\r\n      </button>\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n    </div>\r\n    <!-- end ingredient-fields -->\r\n    <hr>\r\n\r\n    <!-- method: form input -->\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"method\" class=\"control-label\">Method</label>\r\n      <span class=\"rb-required-label\">required</span>\r\n      <textarea\r\n        id=\"method\"\r\n        rows=\"5\"\r\n        formControlName=\"method\"\r\n        class=\"form-control\">\r\n      </textarea>\r\n      <div class=\"alert alert-danger\" *ngIf=\"methodError\" >{{ methodError }}</div>\r\n    </div>\r\n\r\n\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n    <!-- FORM MODEL OUTPUT -->\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -638,7 +657,8 @@ var RecipeEditGuard = (function () {
     function RecipeEditGuard() {
     }
     RecipeEditGuard.prototype.canDeactivate = function (component) {
-        if (component.recipeForm.dirty) {
+        // don't check when form is submitted - only on click links or cancel
+        if (component.formMode !== 'Saved' && component.recipeForm.dirty) {
             return confirm('Navigate away and lose changes?');
         }
         return true;
@@ -678,11 +698,17 @@ var LocalStorage = (function () {
         this.starterRecipes = [
             {
                 recipeName: 'Pumpkin Pie',
-                serves: '2',
+                serves: '4',
                 ingredients: [
-                    { ingredient: 'pumpkins', amount: '1' },
-                    { ingredient: 'pie', amount: '2kg' },
+                    { ingredient: 'pumpkin', amount: '1 15oz can' },
+                    { ingredient: 'condensed milk', amount: '1 14oz can' },
+                    { ingredient: 'eggs', amount: '2 large' },
+                    { ingredient: 'ground cinnamon', amount: '1 tsp' },
+                    { ingredient: 'ground ginger', amount: '1/2 tsp' },
+                    { ingredient: 'condensed milk', amount: '1 14oz can' },
+                    { ingredient: 'condensed milk', amount: '1 14oz can' },
                 ],
+                method: '',
                 id: __WEBPACK_IMPORTED_MODULE_1_underscore__["uniqueId"]()
             },
         ];

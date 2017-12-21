@@ -19,12 +19,14 @@ export class RecipeFormReactiveComponent implements OnInit {
   recipeForm: FormGroup; // the form model
   ingredients: FormArray;
   recipeNameError: string;
+  methodError: string;
 
   urlId: string | undefined;
   recipe: Recipe = new Recipe(); // the data model
   validationMessages = {
     required: 'This field is required',
-    minlength: 'Must be at least three characters'
+    minlength: 'Must be at least three characters',
+    maxlength: 'Maximum length is 1000 characters'
   };
 
   constructor(
@@ -40,18 +42,25 @@ export class RecipeFormReactiveComponent implements OnInit {
     this.recipeForm = this.formBuilder.group({
       recipeName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       serves: '1',
+      method: ['', [Validators.required, Validators.maxLength(1000)]],
       ingredients: this.formBuilder.array([this.buildIngredient()])
     });
 
     // create a separate reference for the form array
     this.ingredients = <FormArray>this.recipeForm.get('ingredients');
 
-    // set listener on recipe name field for validation
+    // set listeners on recipe name and method fields for validation
     const recipeNameCtrl = this.recipeForm.get('recipeName');
     recipeNameCtrl.valueChanges.debounceTime(1000).subscribe(value => {
       console.log({recipeNameCtrl});
       this.setMessage(recipeNameCtrl, 'recipeName');
     });
+
+    const methodCtrl = this.recipeForm.get('method');
+    methodCtrl.valueChanges.debounceTime(1000).subscribe(value => {
+      console.log({ methodCtrl });
+      this.setMessage(methodCtrl, 'method');
+    })
 
     // if form loads for editing a recipe:
     this.urlId = this.route.snapshot.params['id'];
@@ -82,6 +91,13 @@ export class RecipeFormReactiveComponent implements OnInit {
       this.recipeNameError = '';
       if ((ctrl.touched || ctrl.dirty) && ctrl.errors) {
         this.recipeNameError = Object.keys(ctrl.errors).map(key =>
+          this.validationMessages[key]).join(' ');
+      }
+    }
+    if (name === 'method') {
+      this.methodError = '';
+      if ((ctrl.touched || ctrl.dirty) && ctrl.errors) {
+        this.methodError = Object.keys(ctrl.errors).map(key =>
           this.validationMessages[key]).join(' ');
       }
     }
@@ -125,6 +141,8 @@ export class RecipeFormReactiveComponent implements OnInit {
   }
 
   exit(message: string): void {
+    console.log('id', this.recipe.id);
+    this.formMode = 'Saved';
     this.router.navigate(['/recipe', this.recipe.id]);
     this.toastr.success(message);
   }

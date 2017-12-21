@@ -1,7 +1,7 @@
 <section [@showPage]="'on'">
   <div class="panel panel-primary" >
     <div class="panel-heading">
-      <h3>{{recipe.recipeName}}</h3>
+      <h1>{{recipe.recipeName}}</h1>
     </div>
 
     <div class="panel-body">
@@ -9,19 +9,27 @@
     <table class="table">
       <thead>
         <tr>
-          <th><h4>Ingredients</h4></th>
-          <th><h4>Amount</h4></th>
+          <th><h2>Ingredients</h2></th>
+          <th><h2>Amount</h2></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of recipe.ingredients">
-          <td class="myTableCell">{{item.ingredient}}</td>
-          <td class="myTableCell">{{item.amount}}</td>
+          <td class="rb-table-cell">{{item.ingredient}}</td>
+          <td class="rb-table-cell">{{item.amount}}</td>
         </tr>
       </tbody>
     </table>
+    <div class="rb-method">
+      <p>
+         {{recipe.method}}
+      </p>
+
+    </div>
+
     </div>
   </div>
+  <!-- end of panel -->
 
   <div class="rb-index-btns">
     <button class="btn btn-lg btn-warning" [routerLink]="['/reactive', recipe.id]">Edit Recipe</button>

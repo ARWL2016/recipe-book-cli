@@ -9,6 +9,10 @@
   margin: 3px;
 }
 
+div.panel-body {
+  padding: 30px;
+}
+
 
 /* FORM STYLES */
 
@@ -77,6 +81,11 @@ div.alert.alert-danger {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 500px) {
+
+  div.panel-body {
+    padding: 10px;
+  }
+
   .rb-ingredient-input {
     width: 50%;
   }

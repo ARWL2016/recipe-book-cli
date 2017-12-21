@@ -13,11 +13,17 @@ export class LocalStorage {
   starterRecipes: Recipe[] = [
     {
       recipeName: 'Pumpkin Pie',
-      serves: '2',
+      serves: '4',
       ingredients: [
-        {ingredient: 'pumpkins', amount: '1'},
-        {ingredient: 'pie', amount: '2kg'},
+        {ingredient: 'pumpkin', amount: '1 15oz can'},
+        {ingredient: 'condensed milk', amount: '1 14oz can'},
+        {ingredient: 'eggs', amount: '2 large'},
+        {ingredient: 'ground cinnamon', amount: '1 tsp'},
+        {ingredient: 'ground ginger', amount: '1/2 tsp'},
+        {ingredient: 'condensed milk', amount: '1 14oz can'},
+        {ingredient: 'condensed milk', amount: '1 14oz can'},
       ],
+      method: '',
       id: _.uniqueId()
     },
 

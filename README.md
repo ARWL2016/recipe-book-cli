@@ -27,7 +27,6 @@ A front end CRUD application for storing recipes in browser local storage.
 #### to do 
 - do front end checklist
 - add example recipe in full
-- add navigation guards 
 - deploy to Heroku 
 
 #### bugs 
