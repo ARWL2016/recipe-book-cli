@@ -1,10 +1,46 @@
 webpackJsonp([1,5],{
 
-/***/ 107:
+/***/ 147:
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 147;
+
+
+/***/ }),
+
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(169);
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
+}
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 161:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(162);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -13,6 +49,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+
 var AboutPage = (function () {
     function AboutPage() {
     }
@@ -20,8 +57,9 @@ var AboutPage = (function () {
 }());
 AboutPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
-        template: __webpack_require__(181),
-        styles: [__webpack_require__(172)]
+        template: __webpack_require__(333),
+        styles: [__webpack_require__(324)],
+        animations: [__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* pageTransition */]]
     })
 ], AboutPage);
 
@@ -29,19 +67,19 @@ AboutPage = __decorate([
 
 /***/ }),
 
-/***/ 108:
+/***/ 162:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_animations__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_animations__ = __webpack_require__(95);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pageTransition; });
 // import { Component, Input, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 
 var pageTransition = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["a" /* trigger */])('showPage', [
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["b" /* state */])('on', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["c" /* style */])({ transform: 'translateY(0)' })),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["d" /* transition */])('void => on', [
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["c" /* style */])({ transform: 'scale(1.0)' }),
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["e" /* animate */])(400)
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["c" /* style */])({ opacity: 0 }),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["e" /* animate */])('300ms ease-in')
     ]),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["d" /* transition */])('on => void', [
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["e" /* animate */])(300, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["c" /* style */])({ opacity: 0 }))
@@ -51,11 +89,11 @@ var pageTransition = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_
 
 /***/ }),
 
-/***/ 109:
+/***/ 163:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -73,7 +111,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-component',
-        template: __webpack_require__(182),
+        template: __webpack_require__(334),
         providers: []
     })
 ], AppComponent);
@@ -82,22 +120,22 @@ AppComponent = __decorate([
 
 /***/ }),
 
-/***/ 110:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_localstorage_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_toastr_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_localstorage_service__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_toastr_service__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__ = __webpack_require__(167);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -113,7 +151,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import { RecipeForm } from './recipe/recipe-form.component';
 
 
 
@@ -134,10 +171,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot([
                 { path: 'home', component: __WEBPACK_IMPORTED_MODULE_6__recipe_recipe_index_component__["a" /* RecipeIndexComponent */] },
                 { path: 'recipe/:id', component: __WEBPACK_IMPORTED_MODULE_7__recipe_recipe_detail_component__["a" /* RecipeDetailComponent */] },
-                // { path: 'form', component: RecipeForm },
                 { path: 'reactive', component: __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */] },
                 { path: 'reactive/:id', component: __WEBPACK_IMPORTED_MODULE_11__recipe_recipe_form_reactive_component__["a" /* RecipeFormReactiveComponent */] },
-                // { path: 'form/:id', component: RecipeForm },
                 { path: 'about', component: __WEBPACK_IMPORTED_MODULE_8__about_about_page_component__["a" /* AboutPage */] },
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: '**', redirectTo: 'home', pathMatch: 'full' }
@@ -160,7 +195,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 111:
+/***/ 165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -182,14 +217,15 @@ var Recipe = (function () {
 
 /***/ }),
 
-/***/ 112:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_localstorage_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_toastr_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_localstorage_service__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_toastr_service__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__animations__ = __webpack_require__(162);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeDetailComponent; });
 /**
  *  This component renders the data for a single recipe
@@ -207,6 +243,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -233,8 +270,9 @@ var RecipeDetailComponent = (function () {
 }());
 RecipeDetailComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
-        template: __webpack_require__(183),
-        styles: [__webpack_require__(173)]
+        template: __webpack_require__(335),
+        styles: [__webpack_require__(325)],
+        animations: [__WEBPACK_IMPORTED_MODULE_4__animations__["a" /* pageTransition */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_localstorage_service__["a" /* LocalStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_localstorage_service__["a" /* LocalStorage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__services_toastr_service__["a" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_toastr_service__["a" /* ToastrService */]) === "function" && _d || Object])
 ], RecipeDetailComponent);
@@ -244,18 +282,19 @@ var _a, _b, _c, _d;
 
 /***/ }),
 
-/***/ 113:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_recipe_model__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_localstorage_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_toastr_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_debounceTime__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_recipe_model__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_localstorage_service__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_toastr_service__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__animations__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_debounceTime__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_debounceTime__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeFormReactiveComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -266,6 +305,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -381,8 +421,9 @@ var RecipeFormReactiveComponent = (function () {
 RecipeFormReactiveComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-recipe-form-reactive',
-        template: __webpack_require__(184),
-        styles: [__webpack_require__(174)]
+        template: __webpack_require__(336),
+        styles: [__webpack_require__(326)],
+        animations: [__WEBPACK_IMPORTED_MODULE_6__animations__["a" /* pageTransition */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_localstorage_service__["a" /* LocalStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_localstorage_service__["a" /* LocalStorage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__services_toastr_service__["a" /* ToastrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_toastr_service__["a" /* ToastrService */]) === "function" && _e || Object])
 ], RecipeFormReactiveComponent);
@@ -392,13 +433,13 @@ var _a, _b, _c, _d, _e;
 
 /***/ }),
 
-/***/ 114:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localstorage_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__animations__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_localstorage_service__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__animations__ = __webpack_require__(162);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeIndexComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -418,6 +459,7 @@ var RecipeIndexComponent = (function () {
     }
     RecipeIndexComponent.prototype.ngOnInit = function () {
         console.log('INIT RECIPE INDEX');
+        console.log(__WEBPACK_IMPORTED_MODULE_2__animations__["a" /* pageTransition */]);
         this.recipes = this._localStorage.initializeData();
         this.numberOfRecipes = this.recipes.length;
         this.plural = this.numberOfRecipes === 1 ? '' : 's';
@@ -427,8 +469,8 @@ var RecipeIndexComponent = (function () {
 RecipeIndexComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Component */])({
         selector: 'app-index',
-        template: __webpack_require__(185),
-        styles: [__webpack_require__(175)],
+        template: __webpack_require__(337),
+        styles: [__webpack_require__(327)],
         animations: [__WEBPACK_IMPORTED_MODULE_2__animations__["a" /* pageTransition */]]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_localstorage_service__["a" /* LocalStorage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_localstorage_service__["a" /* LocalStorage */]) === "function" && _a || Object])
@@ -439,7 +481,7 @@ var _a;
 
 /***/ }),
 
-/***/ 115:
+/***/ 169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -456,15 +498,15 @@ var environment = {
 
 /***/ }),
 
-/***/ 172:
+/***/ 324:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(false);
+exports = module.exports = __webpack_require__(25)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".myAboutPage {\r\n  background-color: rgba(255,255,255, 0.8); \r\n  padding: 25px; \r\n  border-radius: 5px; \r\n}\r\n\r\n.myAboutPage h2 {\r\n  font-size: 2em; \r\n  margin: 10px 0 20px 0; \r\n}\r\n\r\n.myAboutPage p {\r\n  font-size: 1.2em; \r\n  line-height: 1.5em; \r\n  margin-bottom: 10px; \r\n}", ""]);
+exports.push([module.i, "section {\r\n  background-color: rgba(255,255,255, 0.8);\r\n  padding: 25px;\r\n  border-radius: 5px;\r\n}\r\n\r\nh1 {\r\n  font-size: 1.8em;\r\n  margin: 10px 0 20px 0;\r\n}\r\n\r\np {\r\n  line-height: 1.5em;\r\n  margin-bottom: 10px;\r\n}\r\n\r\np:last-child {\r\n  margin-top: 30px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -474,10 +516,10 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 173:
+/***/ 325:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(false);
+exports = module.exports = __webpack_require__(25)(false);
 // imports
 
 
@@ -492,10 +534,10 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 174:
+/***/ 326:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(false);
+exports = module.exports = __webpack_require__(25)(false);
 // imports
 
 
@@ -510,10 +552,10 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 175:
+/***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)(false);
+exports = module.exports = __webpack_require__(25)(false);
 // imports
 
 
@@ -528,55 +570,55 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 181:
+/***/ 333:
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"myAboutPage\">\r\n<h2>Angular 2 Recipe Book App</h2>\r\n<p>This application was built with Angular 2, Typescript, and Bootstrap to meet the criteria of the FreeCodeCamp challenge\r\n  <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\" rel=\"noopener noreferrer\">Build a Recipe Box</a>.\r\n  An alternative version of this app, built with React, can be seen\r\n  <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.</p>\r\n  <p>The data for this application is kept in the browser local storage, and will persist between sessions.</p>\r\n  <p>The form is implemented using the reactive form style.</p>\r\n  <p>The source code for can be found on\r\n    <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\" rel=\"noopener noreferrer\">Github</a>.\r\n    For more projects, see my <a href=\"https://alistair-willis.herokuapp.com/overview\">portfolio</a> site.\r\n  </p>\r\n  <p><b>Coded by Alistair Willis</b></p>\r\n</section>\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <h1>Recipe Book</h1>\r\n  <p>This application was built with Angular 4.0, Typescript 2.2, and Bootstrap 3.3.7 to meet the criteria of the FreeCodeCamp challenge\r\n    <a href=\"https://www.freecodecamp.com/challenges/build-a-recipe-box\" target=\"_blank\" rel=\"noopener noreferrer\">Build a Recipe Box</a>.\r\n    An alternative version of this app, built with React, can be seen\r\n    <a href=\"https://recipe-book-arwl.herokuapp.com\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>.</p>\r\n    <ul>\r\n      <li>Application data cached in browser local storage, and will persist between sessions</li>\r\n      <li>Form implemented using the Angular reactive form style</li>\r\n      <li>Notifications created with Toastr</li>\r\n      <li>Page animations require the @angular/animations 4.1.3 module</li>\r\n    </ul>\r\n    <p>The source code can be found on\r\n      <a href=\"https://github.com/ARWL2016/recipe-book-app-ng\" target=\"_blank\" rel=\"noopener noreferrer\">Github</a>.\r\n      For more projects, see my <a href=\"https://alistair-willis.herokuapp.com/overview\">portfolio</a>.\r\n    </p>\r\n    <p><b>Coded by Alistair Willis</b></p>\r\n</section>\r\n"
 
 /***/ }),
 
-/***/ 182:
+/***/ 334:
 /***/ (function(module, exports) {
 
-module.exports = "    <header>\r\n      <nav class=\"navbar navbar-default\">\r\n        <div class=\"container-fluid\">\r\n\r\n          <a [routerLink]=\"['/home']\" class=\"navbar-brand\"><b>RECIPE BOOK</b></a>\r\n            <ul class=\"nav nav-tabs\">\r\n              <li><a [routerLink]=\"['/home']\">RECIPES</a></li>\r\n              <li><a [routerLink]=\"['/reactive']\">ADD RECIPE</a></li>\r\n              <li><a [routerLink]=\"['/about']\">ABOUT</a></li>\r\n            </ul>\r\n        </div>\r\n      </nav>\r\n    </header>\r\n\r\n    <main class=\"page-wrapper\">\r\n      <div class=\"container myContainer\" >\r\n        <router-outlet></router-outlet>\r\n      </div>\r\n    </main>\r\n"
+module.exports = "    <header>\r\n      <nav class=\"navbar navbar-default\">\r\n        <div class=\"container-fluid\">\r\n\r\n          <a [routerLink]=\"['/home']\" class=\"navbar-brand\"><b>RECIPE BOOK</b></a>\r\n            <ul class=\"nav nav-tabs\">\r\n              <li><a [routerLink]=\"['/home']\">RECIPES</a></li>\r\n              <li><a [routerLink]=\"['/reactive']\">ADD RECIPE</a></li>\r\n              <li><a [routerLink]=\"['/about']\">ABOUT</a></li>\r\n            </ul>\r\n        </div>\r\n      </nav>\r\n    </header>\r\n\r\n    <main class=\"page-wrapper\">\r\n      <div class=\"container\" >\r\n        <router-outlet></router-outlet>\r\n      </div>\r\n    </main>\r\n"
 
 /***/ }),
 
-/***/ 183:
+/***/ 335:
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"panel panel-primary\" >\r\n  <div class=\"panel-heading\">\r\n    <h3>{{recipe.recipeName}}</h3>\r\n  </div>\r\n\r\n  <div class=\"panel-body\">\r\n    <p class=\"rb-serves\">serves {{recipe.serves}}</p>\r\n  <table class=\"table\">\r\n    <thead>\r\n      <tr>\r\n        <th><h4>Ingredients</h4></th>\r\n        <th><h4>Amount</h4></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let item of recipe.ingredients\">\r\n        <td class=\"myTableCell\">{{item.ingredient}}</td>\r\n        <td class=\"myTableCell\">{{item.amount}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  </div>\r\n</section>\r\n\r\n<div class=\"rb-index-btns\">\r\n  <button class=\"btn btn-lg btn-warning\" [routerLink]=\"['/reactive', recipe.id]\">Edit Recipe</button>\r\n  <button class=\"btn btn-lg btn-danger\" (click)=\"deleteRecipe()\">Delete Recipe</button>\r\n  <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-success btn-back\">Back to Recipe List</button>\r\n</div>\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-primary\" >\r\n    <div class=\"panel-heading\">\r\n      <h3>{{recipe.recipeName}}</h3>\r\n    </div>\r\n\r\n    <div class=\"panel-body\">\r\n      <p class=\"rb-serves\">serves {{recipe.serves}}</p>\r\n    <table class=\"table\">\r\n      <thead>\r\n        <tr>\r\n          <th><h4>Ingredients</h4></th>\r\n          <th><h4>Amount</h4></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let item of recipe.ingredients\">\r\n          <td class=\"myTableCell\">{{item.ingredient}}</td>\r\n          <td class=\"myTableCell\">{{item.amount}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"rb-index-btns\">\r\n    <button class=\"btn btn-lg btn-warning\" [routerLink]=\"['/reactive', recipe.id]\">Edit Recipe</button>\r\n    <button class=\"btn btn-lg btn-danger\" (click)=\"deleteRecipe()\">Delete Recipe</button>\r\n    <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-success btn-back\">Back to Recipe List</button>\r\n  </div>\r\n\r\n</section>\r\n"
 
 /***/ }),
 
-/***/ 184:
+/***/ 336:
 /***/ (function(module, exports) {
 
-module.exports = "<section>\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label myFormLabel\">Recipe Name</label>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control myRecipeNameInput\"\r\n        placeholder=\"enter a recipe name\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n    <!-- serves radio buttons -->\r\n    <label>Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <!-- ingredients fields -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"enter an ingredient\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"enter an amount\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn btn-primary ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add Another Ingredient\r\n      </button>\r\n      <button\r\n        class=\"btn btn-warning ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove Ingredient\r\n      </button>\r\n\r\n\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n\r\n    </div>\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <form\r\n    (ngSubmit)=\"save()\"\r\n    [formGroup]=\"recipeForm\"\r\n    class=\"myForm\"\r\n    novalidate >\r\n\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>{{formMode}} Recipe <span *ngIf=\"formMode==='Edit'\">- {{recipe.recipeName}}</span></h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n\r\n    <!-- recipe name field -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeNameError}\" >\r\n      <label for=\"recipeNameId\" class=\"control-label myFormLabel\">Recipe Name</label>\r\n      <input\r\n        id=\"recipeNameId\" type=\"text\"\r\n        class=\"form-control myRecipeNameInput\"\r\n        placeholder=\"enter a recipe name\"\r\n        formControlName=\"recipeName\">\r\n      <div class=\"alert alert-danger\" *ngIf=\"recipeNameError\" >{{ recipeNameError }}</div>\r\n    </div>\r\n\r\n    <!-- serves radio buttons -->\r\n    <label>Serves</label>\r\n    <div class=\"rb-radio-btns\">\r\n      <input type=\"radio\" id=\"serves1\" value=\"1\" formControlName=\"serves\">\r\n      <label for=\"serves1\">1</label>\r\n\r\n      <input type=\"radio\" id=\"serves2\" value=\"2\" formControlName=\"serves\">\r\n      <label for=\"serves2\">2</label>\r\n\r\n      <input type=\"radio\" id=\"serves4\" value=\"4\" formControlName=\"serves\">\r\n      <label for=\"serves4\">4</label>\r\n\r\n      <input type=\"radio\" id=\"serves6\" value=\"6\" formControlName=\"serves\">\r\n      <label for=\"serves6\">6</label>\r\n\r\n      <input type=\"radio\" id=\"serves8\" value=\"8\" formControlName=\"serves\">\r\n      <label for=\"serves6\">8</label>\r\n    </div>\r\n\r\n    <!-- ingredients fields -->\r\n    <div class=\"form-group\" [ngClass]=\"{'has-error': recipeForm.get('ingredients').errors}\">\r\n      <label class=\"control-label rb-ingredient-label\">Ingredients</label>\r\n      <label class=\"control-label rb-amount-label\">Amount</label>\r\n\r\n      <div formArrayName=\"ingredients\" *ngFor=\"let ingredient of ingredients.controls; let i = index\">\r\n        <div [formGroupName]=\"i\">\r\n          <input\r\n            class=\"form-control rb-ingredient-input\"\r\n            id=\"{{ 'ingredient' + i }}\"\r\n            placeholder=\"enter an ingredient\"\r\n            formControlName=\"ingredient\">\r\n          <input\r\n            class=\"form-control rb-amount-input\"\r\n            id=\"{{ 'amount' + i }}\"\r\n            placeholder=\"enter an amount\"\r\n            formControlName=\"amount\">\r\n        </div>\r\n      </div>\r\n      <button\r\n        class=\"btn btn-primary ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.invalid\"\r\n        (click)=\"addIngredient()\">Add Another Ingredient\r\n      </button>\r\n      <button\r\n        class=\"btn btn-warning ingredientBtn\"\r\n        type=\"button\"\r\n        [disabled]=\"ingredients.length < 2\"\r\n        (click)=\"removeIngredient()\">Remove Ingredient\r\n      </button>\r\n\r\n\r\n        <!-- <div class=\"alert alert-danger\" *ngIf=\"inp2.touched && inp2.invalid\" [@invalid]=\"'displayed'\" >You must enter at least one ingredient</div> -->\r\n\r\n    </div>\r\n      <!-- <br>Dirty: {{ recipeForm.dirty }}\r\n      <br>touched: {{ recipeForm.touched }}\r\n      <br>valid: {{ recipeForm.valid }}\r\n      <br>value: {{ recipeForm.value | json }}\r\n      <br>name valid: {{ recipeForm.get('recipeName').valid }} -->\r\n    </div>\r\n    <!-- end of .panel-body -->\r\n\r\n  </div>\r\n    <div class=\"rb-form-btns\">\r\n      <button type=\"submit\"\r\n              class=\"btn btn-lg btn-primary\"\r\n              [disabled]=\"!recipeForm.valid\">\r\n        Save\r\n      </button>\r\n      <button [routerLink]=\"['/recipes']\" class=\"btn btn-lg btn-warning\">Cancel</button>\r\n    </div>\r\n  </form>\r\n</section>\r\n\r\n\r\n"
 
 /***/ }),
 
-/***/ 185:
+/***/ 337:
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"panel panel-primary\" [@showPage]=\"'on'\">\r\n  <div class=\"panel-heading\">\r\n    <h3>Recipe List</h3>\r\n  </div>\r\n  <div class=\"panel-body\">\r\n    <table class=\"table\">\r\n      <thead>\r\n        <tr>\r\n          <th><h4>You have {{numberOfRecipes}} recipe{{plural}}. Click below to see the details.</h4></th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let recipe of recipes\">\r\n          <td class=\"myTableCell\"><a [routerLink]=\"['/recipe', recipe.id]\">{{recipe.recipeName}} {{recipe.id}}</a></td>\r\n        </tr>\r\n      </tbody>\r\n    </table>\r\n    </div>\r\n  </section>\r\n\r\n<button class=\"btn btn-lg btn-primary\" [routerLink]=\"['/reactive']\">Add New Recipe</button>\r\n"
+module.exports = "<section [@showPage]=\"'on'\">\r\n  <div class=\"panel panel-primary\">\r\n    <div class=\"panel-heading\">\r\n      <h3>Recipe List</h3>\r\n    </div>\r\n    <div class=\"panel-body\">\r\n      <table class=\"table\">\r\n        <thead>\r\n          <tr>\r\n            <th><h4>You have {{numberOfRecipes}} recipe{{plural}}. Click below to see the details.</h4></th>\r\n          </tr>\r\n        </thead>\r\n        <tbody>\r\n          <tr *ngFor=\"let recipe of recipes\">\r\n            <td class=\"myTableCell\"><a [routerLink]=\"['/recipe', recipe.id]\">{{recipe.recipeName}} {{recipe.id}}</a></td>\r\n          </tr>\r\n        </tbody>\r\n      </table>\r\n      </div>\r\n    </div>\r\n\r\n  <button class=\"btn btn-lg btn-primary\" [routerLink]=\"['/reactive']\">Add New Recipe</button>\r\n</section>\r\n"
 
 /***/ }),
 
-/***/ 226:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(94);
+module.exports = __webpack_require__(148);
 
 
 /***/ }),
 
-/***/ 25:
+/***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_underscore__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_underscore__ = __webpack_require__(373);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_underscore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_underscore__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocalStorage; });
 /**
@@ -659,11 +701,11 @@ LocalStorage = __decorate([
 
 /***/ }),
 
-/***/ 37:
+/***/ 63:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(8);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToastrService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -699,42 +741,7 @@ ToastrService = __decorate([
 
 //# sourceMappingURL=toastr.service.js.map
 
-/***/ }),
-
-/***/ 93:
-/***/ (function(module, exports) {
-
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 93;
-
-
-/***/ }),
-
-/***/ 94:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(115);
-
-
-
-
-if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
-}
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=main.js.map
-
 /***/ })
 
-},[226]);
+},[379]);
 //# sourceMappingURL=main.bundle.js.map

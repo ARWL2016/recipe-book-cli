@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RecipeIndexComponent } from './recipe/recipe-index.component';
-// import { RecipeForm } from './recipe/recipe-form.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail.component';
 import { AboutPage } from './about/about-page.component';
 import { LocalStorage } from './services/localstorage.service';
@@ -23,10 +22,8 @@ import { RecipeFormReactiveComponent } from './recipe/recipe-form-reactive.compo
     RouterModule.forRoot([
       { path: 'home', component: RecipeIndexComponent },
       { path: 'recipe/:id', component: RecipeDetailComponent},
-      // { path: 'form', component: RecipeForm },
       { path: 'reactive', component: RecipeFormReactiveComponent },
       { path: 'reactive/:id', component: RecipeFormReactiveComponent },
-      // { path: 'form/:id', component: RecipeForm },
       { path: 'about', component: AboutPage },
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: '**', redirectTo: 'home', pathMatch: 'full'}

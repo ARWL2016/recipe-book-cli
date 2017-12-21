@@ -11,10 +11,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../models/recipe.model';
 import { LocalStorage } from '../services/localstorage.service';
 import { ToastrService } from '../services/toastr.service';
+import { pageTransition } from '../animations';
 
 @Component({
   templateUrl: './recipe-detail.html',
-  styleUrls: ['./recipe-detail.css']
+  styleUrls: ['./recipe-detail.css'],
+  animations: [pageTransition]
 })
 export class RecipeDetailComponent implements OnInit {
   id: string;

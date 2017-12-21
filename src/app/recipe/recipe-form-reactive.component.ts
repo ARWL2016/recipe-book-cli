@@ -4,13 +4,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Recipe } from '../models/recipe.model';
 import { LocalStorage } from '../services/localstorage.service';
 import { ToastrService } from '../services/toastr.service';
+import { pageTransition } from '../animations';
 
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-recipe-form-reactive',
   templateUrl: './recipe-form-reactive.component.html',
-  styleUrls: ['./recipe-form-reactive.component.css']
+  styleUrls: ['./recipe-form-reactive.component.css'],
+  animations: [pageTransition]
 })
 export class RecipeFormReactiveComponent implements OnInit {
   formMode = 'Add';

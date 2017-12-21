@@ -5,8 +5,8 @@ export const pageTransition =
   trigger('showPage', [
     state('on', style({ transform: 'translateY(0)' })),
     transition('void => on', [
-      style({ transform: 'scale(1.0)'}),
-      animate(400)
+      style({ opacity: 0}),
+      animate('300ms ease-in')
     ]),
     transition('on => void', [
       animate(300, style({ opacity: 0}))
