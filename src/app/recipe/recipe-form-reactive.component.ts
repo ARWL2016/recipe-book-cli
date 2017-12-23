@@ -131,7 +131,7 @@ export class RecipeFormReactiveComponent implements OnInit {
     this.ingredients.controls.shift();
   }
 
-  save(recipeForm: FormGroup): void {
+  save(): void {
     if (this.formMode === 'Add') {
       this.recipe = this.recipeForm.value;
       this.store.saveNewRecipe(this.recipe);
