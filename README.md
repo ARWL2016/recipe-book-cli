@@ -14,6 +14,13 @@ A front end CRUD application for storing recipes in browser local storage.
 - Express 4.15
 - Build: Angular CLI, typescript 
 
+#### Features 
+- responsive design 
+- angular animations 
+- reactive form
+- toast notifications 
+- Ahead-of-Time compilation
+
 #### Run this App (dev) 
 - `npm install`
 - `npm run build:watch` - run webpack and Angular compiler in watch mode 
