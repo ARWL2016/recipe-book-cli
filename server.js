@@ -5,14 +5,13 @@ const path = require('path');
 const ms = require('ms');
 
 const app = express();
-const staticOptions = {maxAge: '10d'};
 
 app.use(helmet());
 app.use(compression());
 
 const port = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname, 'dist'), staticOptions));
+app.use(express.static(path.join(__dirname, 'dist'), {maxAge: '1y'}));
 
 app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-store');

@@ -15,11 +15,11 @@ A front end CRUD application for storing recipes in browser local storage.
 - Build: Angular CLI, typescript 
 
 #### Features 
-- responsive design 
-- angular animations 
-- reactive form
-- toast notifications 
-- Ahead-of-Time compilation
+- responsive design  
+- angular animations  
+- reactive form  
+- toast notifications  
+- Ahead-of-Time compilation 
 
 #### Run this App (dev) 
 - `npm install`
