@@ -8,5 +8,19 @@
     "**/.DS_Store": true, 
     "src/**/**/*.js": true,
     "src/**/**/*.map": true
-  }
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#c27b77",
+    "activityBar.activeBorder": "#a7d8aa",
+    "activityBar.background": "#c27b77",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#a7d8aa",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#b25954",
+    "statusBar.border": "#b25954",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#c27b77"
+  },
+  "peacock.color": "#b25954"
 }
